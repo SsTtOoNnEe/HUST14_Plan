@@ -13,5 +13,10 @@ public class UserController {
         return "index";
     }
 
+    @GetMapping("/lit")
+    public String test1(){
+        return "index";
+    }
+
 
 }
