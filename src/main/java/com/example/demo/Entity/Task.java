@@ -1,0 +1,40 @@
+package com.example.demo.Entity;
+
+public class Task {
+    private String Task_name;
+    private String Task_time;
+    private Integer Task_type;
+    private Integer Task_severity;
+
+    public String getTask_name() {
+        return Task_name;
+    }
+
+    public void setTask_name(String task_name) {
+        Task_name = task_name;
+    }
+
+    public String getTask_time() {
+        return Task_time;
+    }
+
+    public void setTask_time(String task_time) {
+        Task_time = task_time;
+    }
+
+    public Integer getTask_type() {
+        return Task_type;
+    }
+
+    public void setTask_type(Integer task_type) {
+        Task_type = task_type;
+    }
+
+    public Integer getTask_severity() {
+        return Task_severity;
+    }
+
+    public void setTask_severity(Integer task_severity) {
+        Task_severity = task_severity;
+    }
+}
