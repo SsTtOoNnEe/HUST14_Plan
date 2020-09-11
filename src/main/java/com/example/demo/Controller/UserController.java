@@ -10,13 +10,14 @@ public class UserController {
 
     @GetMapping("/list")
     public String test(){
-        return "index";
+        return "test1";
     }
 
-    @GetMapping("/lit")
-    public String test1(){
-        return "index";
-    }
+
+
+
+
+
 
 
 }
