@@ -30,12 +30,14 @@ public class UserController {
         User user = userService.findUserByID(1);
         String[] tasksID = user.getTasks_ID().split(",");
 
+
         List<Task> tasks = null;
 
         for(int i=0;i<tasksID.length;i++){
             Task task = taskService.findTaskByID(Integer.parseInt(tasksID[i]));
             tasks.add(task);
         }
+
 
         model.addAttribute("user",user);
         model.addAttribute("tasks",tasks);
