@@ -19,6 +19,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
     TaskService taskService;
 
     @GetMapping("/allplan")
@@ -27,6 +28,10 @@ public class UserController {
         User user = userService.findUserByID();
         String[] tasksID = user.getTasks_ID().split(",");
         Task tasks = taskService.findTaskByID(1);
+
+        /*for(int i=0;i<tasksID.length;i++){
+            Task tasks=taskService.findTaskByID(Integer.parseInt(tasksID[i]));
+        }*/
 
 
 //        for(int i=0;i<tasksID.length;i++){

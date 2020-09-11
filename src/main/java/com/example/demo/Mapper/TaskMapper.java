@@ -11,5 +11,4 @@ public interface TaskMapper {
 
     @Select("SELECT * FROM task_info where Task_ID=${Task_ID}")
     Task findTaskByID(Integer Task_ID);
-
 }
