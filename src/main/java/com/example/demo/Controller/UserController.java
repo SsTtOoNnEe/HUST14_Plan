@@ -30,7 +30,6 @@ public class UserController {
         User user = userService.findUserByID(1);
         String[] tasksID = user.getTasks_ID().split(",");
 
-
         List<Task> tasks = null;
 
         for(int i=0;i<tasksID.length;i++){
