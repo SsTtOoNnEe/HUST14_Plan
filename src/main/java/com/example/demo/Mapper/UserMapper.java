@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-    @Select("selete * from user_info")
-    List<User> findAllUser();
+
+    @Select("SELECT * FROM hust_plan.user_info where User_ID=1")
+    User findUserByID();
 }
