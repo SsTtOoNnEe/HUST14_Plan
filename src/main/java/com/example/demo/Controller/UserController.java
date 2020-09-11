@@ -17,9 +17,17 @@ import java.util.List;
 @RequestMapping("UserPage")
 public class UserController {
 
+<<<<<<< HEAD
+    @GetMapping("/list")
+    public String test(){
+        return "allplan";
+    }
+
+=======
     @Autowired
     UserService userService;
     TaskService taskService;
+>>>>>>> b88de79c7a551085c1504d2b8dcbef1054739553
 
     @GetMapping("/allplan")
     public String getAllPlanPage(Model model){
