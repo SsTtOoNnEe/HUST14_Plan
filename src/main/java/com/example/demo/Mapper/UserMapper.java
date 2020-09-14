@@ -12,4 +12,7 @@ public interface UserMapper {
 
     @Select("SELECT * FROM hust_plan.user_info where User_ID=${User_ID}")
     User findUserByID(Integer User_ID);
+
+    @Select("Select * from hust_plan.user_info where User_name=${User_name")
+    User findUserByName(String User_name);
 }

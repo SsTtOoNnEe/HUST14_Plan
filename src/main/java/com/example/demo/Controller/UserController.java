@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -31,7 +32,6 @@ public class UserController {
         User user = userService.findUserByID(1);
         String[] tasksID = user.getTasks_ID().split(",");
 
-
         List<Task> tasks = new ArrayList<>();
 
         for(int i=0;i<tasksID.length;i++){
@@ -44,10 +44,20 @@ public class UserController {
         model.addAttribute("user",user);
         model.addAttribute("tasks",tasks);
 
-
         return "test1";
     }
 
+    @PostMapping("/userLogin")
+    public String userLogin(){
+        User user = userService.findUserByName("");
+        return "test1";
+    }
+
+
+    @GetMapping("/testPage")
+    public String testPage(){
+        return "login";
+    }
     
 
 }
