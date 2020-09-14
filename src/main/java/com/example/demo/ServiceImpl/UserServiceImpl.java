@@ -19,6 +19,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.findUserByID(User_ID);
     }
 
+    @Override
+    public User getPwdByUserName(String User_name, String User_pwd) {
+        return userMapper.getPwdByUserName(User_name,User_pwd);
+    }
 
     @Override
     public User findUserByName(String User_name) {
@@ -30,5 +34,6 @@ public class UserServiceImpl implements UserService {
     public Integer register(User user) {
         return userMapper.register(user);
     }
+
 
 }

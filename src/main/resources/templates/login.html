@@ -40,16 +40,19 @@
       <div class="form-row">
         <div class="col-lg-8">
           <div class="card-body">
-            <form action="/UserPage/userLogin" method="post">
 
+            <form method="post" action="/UserPage/selectPwd">
               <div class="form-group">
                 <label for="exampleInputEmail1">用户名</label>
-                <input class="form-control" name="User_name" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="user_name">
+                <input class="form-control" name="UserName" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="user_name">
+
               </div>
 
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input class="form-control" name="User_pwd" id="exampleInputPassword1" type="password">
+
+                <input class="form-control" name="UserPwd" id="exampleInputPassword1" type="password" placeholder="******">
+
               </div>
 
               <div class="form-group">
@@ -60,8 +63,9 @@
               </div>
 
               <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">登录</button>
+                <button type="submit" class="btn btn-info">登录</button>
               </div>
+
 
             </form>
 
@@ -100,10 +104,10 @@
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
 
 </html>

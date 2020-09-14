@@ -8,11 +8,9 @@ public interface UserService {
 
     User findUserByID(Integer User_ID);
 
-    User findUserByName(String User_name);
+    User getPwdByUserName(String User_name,String User_pwd);
 
     Integer register(User user);
-
-
 
 
 

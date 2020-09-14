@@ -5,6 +5,7 @@ import com.example.demo.Entity.Task;
 import com.example.demo.Entity.User;
 import com.example.demo.Service.TaskService;
 import com.example.demo.Service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,22 +58,27 @@ public class UserController {
         return "test1";
     }
 
-    @GetMapping("/userLogin")
-    public String userLogin(){
-        return "login";
-    }
-
-    @PostMapping("/userLogin")
-    public String userLogin(String User_name,String User_pwd){
-        User user = userService.findUserByName(User_name);
-        System.out.println(user.getUser_pwd());
-        return "allplan";
-    }
-
 
     @GetMapping("/testPage")
     public String testPage(){
         return "login";
+
+    @GetMapping("/login")
+    public String loginByUserNameAndPwd(){
+            return "login";
+    }
+
+    @PostMapping("/selectPwd")
+    public String selectPwd(String UserName,String UserPwd){
+        User user = userService.getPwdByUserName(UserName,UserPwd);
+        if(user!=null && user.getUser_pwd().equals(UserPwd)){
+            System.out.println("登录成功！");
+            return "allplan";
+        }else{
+            System.out.println("用户名或密码错误！");
+            return "login";
+        }
+
     }
 
 
