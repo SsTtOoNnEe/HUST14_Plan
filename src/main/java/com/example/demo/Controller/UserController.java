@@ -54,13 +54,14 @@ public class UserController {
         model.addAttribute("user",user);
         model.addAttribute("tasks",tasks);
 
-        return "test1";
+        return "allplan";
     }
 
 
     @GetMapping("/testPage")
-    public String testPage(){
-        return "login";
+    public String testPage() {
+        return "allplan";
+    }
 
     @GetMapping("/login")
     public String loginByUserNameAndPwd(){
