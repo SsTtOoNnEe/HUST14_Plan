@@ -19,10 +19,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.findUserByID(User_ID);
     }
 
-    @Override
-    public String findUserPWD(String User_Name) {
-        return userMapper.findUserPWD(User_Name);
-    }
+
 
 
 }
