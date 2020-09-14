@@ -11,6 +11,15 @@ public class User {
     private String User_tagSchool;
     private String User_slogan;
     private String Tasks_ID;
+    private String User_phone;
+
+    public String getUser_phone() {
+        return User_phone;
+    }
+
+    public void setUser_phone(String user_phone) {
+        User_phone = user_phone;
+    }
 
     public String getTasks_ID() {
         return Tasks_ID;
