@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -23,7 +24,16 @@ public class UserController {
     @Autowired
     TaskService taskService;
 
+    @GetMapping("/register")
+    public String getRegister(){
+        return "user_register";
+    }
 
+    @PostMapping("/register")
+    public String getRegister(User user){
+        userService.register(user);
+        return "redirect:/UserPage/register";
+    }
     @GetMapping("/allplan")
     public String getAllPlanPage(Model model){
 
@@ -41,8 +51,6 @@ public class UserController {
         model.addAttribute("user",user);
         model.addAttribute("tasks",tasks);
 
-
         return "test1";
     }
-
 }
