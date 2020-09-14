@@ -14,5 +14,7 @@ public interface UserService {
 
     List<User> rankMyFriend();
 
+    Integer updateUserTasksID(String Tasks_ID,String User_name);
+
 
 }

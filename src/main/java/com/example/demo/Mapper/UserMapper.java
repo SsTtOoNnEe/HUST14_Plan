@@ -1,10 +1,8 @@
 package com.example.demo.Mapper;
 
+import com.example.demo.Entity.Task;
 import com.example.demo.Entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -22,4 +20,7 @@ public interface UserMapper {
 
     @Select("select * from hust_plan.testforrank order by User_learningTime DESC")
     List<User> rankMyFriend();
+
+    @Update("update user_info set Tasks_ID=#{Tasks_ID} where User_name=#{User_name}")
+    Integer updateUserTasksID(@Param("Tasks_ID") String Tasks_ID,@Param("User_name") String User_name);
 }

@@ -2,337 +2,363 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
-  <!-- Bootstrap core CSS-->
-  <link href="/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="/css/sb-admin.css" rel="stylesheet">
-<style>
-  .modal {
-    display: none; /* 默认隐藏 */
-    position: fixed; /* 固定定位 */
-    z-index: 1; /* 设置在顶层 */
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%;
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
-}
- 
-/* 弹窗内容 */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
-}
- 
-/* 关闭按钮 */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
- 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin - Start Bootstrap Template</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin.css" rel="stylesheet">
+    <style>
+        .modal {
+            display: none; /* 默认隐藏 */
+            position: fixed; /* 固定定位 */
+            z-index: 1; /* 设置在顶层 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
 
-</style>
+        /* 弹窗内容 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* 关闭按钮 */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Learning Plan</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" th:href="@{'/UserPage/allplan/'+${user.User_name}}">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">所有任务</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" th:href="@{'/UserPage/analysis/'+${user.User_name}}">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">任务分析</span>
-          </a>
-        </li>
-
- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">好友列表</span>
-          </a>
-
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">添加好友</a>
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" th:href="@{'/UserPage/allplan/'+${user.User_name}}">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">所有任务</span>
+                </a>
             </li>
-            <li>
-              <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">好友排行</a>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <a class="nav-link" th:href="@{'/UserPage/analysis/'+${user.User_name}}">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">任务分析</span>
+                </a>
             </li>
-          </ul>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
+                    <i class="fa fa-fw fa-table"></i>
+                    <span class="nav-link-text">好友列表</span>
+                </a>
+
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">添加好友</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">好友排行</a>
+                    </li>
+                </ul>
 
 
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">设置</span>
-          </a>
-        </li>
-      </ul>
-      
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">设置</span>
+                </a>
+            </li>
+        </ul>
+
     </div>
-  </nav>
+</nav>
 
 
-
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <div class="row">
-        <div class="col-9 form-group " style="height:50px;">
-          <div class="addLine" style="background:rgba(0,0,0,0.2);border-radius:10px;">
-            <div align="right" style="opacity:1.0;" ><input id="myBtn"name="imgbtn" type="image" src="/img/add_plan_button.png" width="50px"  border="0"></div>
-          </div>
-          <!-- 添加任务时弹窗 -->
-          <div id="myModal" class="modal" style="margin:0 auto;width:60%;" >
-              <!-- 弹窗内容 -->
-              <div class="modal-content" >
-                <div class="close"style="background:rgba(174, 228, 48, 0.2);border-radius:30px;width:100%;height:300px;position:relative;">
-                 <form>
-                    <div class="row">
-                     <div class="col-3"><label  class="control-label">计划名称</label></div>
-                     <div class="col-5 col-offset-2"><input type="text" class="form-control"  placeholder="在此添加计划名称"></div>
-                     <div class="col-2 "><img src="/img/close.png" class="closePic" width="50%" ></div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-3"><label  class="control-label">类型</label></div>
-                        <label class="radio-inline">
-                            <input type="radio"  name="leixing" value="1" class="jishi"> 计时</label>
-                        <label class="radio-inline">
-                            <input type="radio"  name="leixing" value="0" class="daojishi">倒计时</label>
-                    </div>
-                    <br>
-                    <div class="row timeLength" style="visibility:hidden">
-                        <div class="col-3"><label  class="control-label">时长</label></div>
-                        <div class="col-5 col-offset-2"><input type="text" class="form-control"  placeholder="300"></div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-3" style="margin:0 auto;">
-                            <button type="submit" class="btn btn-info">完成</button>
+        <!-- Breadcrumbs-->
+        <div class="row">
+            <div class="col-9 form-group " style="height:50px;">
+                <div class="addLine" style="background:rgba(0,0,0,0.2);border-radius:10px;">
+                    <div align="right" style="opacity:1.0;"><input id="myBtn" name="imgbtn" type="image"
+                                                                   src="/img/add_plan_button.png" width="50px"
+                                                                   border="0"></div>
+                </div>
+                <!-- 添加任务时弹窗 -->
+                <div id="myModal" class="modal" style="margin:0 auto;width:60%;">
+                    <!-- 弹窗内容 -->
+                    <div class="modal-content">
+                        <div class="close"
+                             style="background:rgba(174, 228, 48, 0.2);border-radius:30px;width:100%;height:300px;position:relative;">
+                            <form th:action="@{'/UserPage/add/'+${user.User_name}}" method="post">
+                                <div class="row">
+                                    <div class="col-3"><label class="control-label">计划名称</label></div>
+                                    <div class="col-5 col-offset-2"><input type="text" class="form-control" name="Task_name"
+                                                                           placeholder="在此添加计划名称"></div>
+                                    <div class="col-2 "><img src="/img/close.png" class="closePic" width="50%"></div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-3"><label class="control-label">类型</label></div>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="Task_type" value="1" class="jishi"> 计时</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="Task_type" value="0" class="daojishi">倒计时</label>
+                                </div>
+                                <br>
+                                <div class="row timeLength" style="visibility:hidden">
+                                    <div class="col-3"><label class="control-label">时长</label></div>
+                                    <div class="col-5 col-offset-2"><input type="text" class="form-control" name="Task_time"
+                                                                           placeholder="300"></div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-3" style="margin:0 auto;">
+                                        <button type="submit" class="btn btn-info">完成</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                 </form>                  
                 </div>
-              </div>
-          </div>
 
 
-      </div>
+            </div>
 
 
-        <div class="col-1 ">
-          <img src="/img/kobe.png" width="50px" class="img-thumbnail">
-          
+            <div class="col-1 ">
+                <img src="/img/kobe.png" width="50px" class="img-thumbnail">
+
+            </div>
+            <div class="col-2">
+                <a th:text="${user.User_name}"></a>
+                <textarea th:text="${user.User_slogan}" style="width: 80%" rows="1" placeholder="世上无难事"></textarea>
+            </div>
         </div>
-        <div class="col-2" >
-            石剑寒<textarea style="width: 80%" rows="1" placeholder="世上无难事"></textarea>
-        </div>  
-      </div>
-      <div class="row">
-        <div class="col-9 form-group" >
-        <div class="firstPlan" style="background: rgba(174, 228, 48, 0.2);border-radius:10px;width:100%;height:300px;position:relative;">
-  
-        
-        <table class="table" >
-            <tr>
-              <th>任务名称</th>
-              <th>任务时长</th>
-            </tr>
-            <tr>
-              <td>English</td>
-              <td>5h30min</td>
-            </tr>    
+        <div class="row">
+            <div class="col-9 form-group">
+                <div class="firstPlan"
+                     style="background: rgba(174, 228, 48, 0.2);border-radius:10px;width:100%;height:300px;position:relative;">
 
-            <tr><td colspan="2">
-             <a href="startplan.html"><img class="duBtn img-thumbnail" src="/img/startplan.png" width="50px" ></a>
-              </td>
-          </tr>
-       <a href="startplan.html"><button class="btn btn-info startfirstplan"type="submit" style="position:absolute;left:20%;bottom:10%;">start</button></a>   
-       <a href="editplan.html"> <button class="btn btn-info editMyplan"type="submit" style="position:absolute;right:20%;bottom:10%;">edit</button></a> 
-
-            </table>
-          </div> 
-      </div>        
-          <div class = "col-3 ">
-            <h2>Progress</h2>
-            <table class="table">
-              <tr>
-                <th>任务名称</th>
-                <th>任务时长</th>
-              </tr>
-              <tr>
-                <td>English</td>
-                <td>5h30min</td>
-              </tr>    
-              <tr><td colspan="2"><div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                    60%
-                  </div>
-              </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Geometry</td>
-                <td>4h30min</td>
-              </tr>    
-              <tr><td colspan="2"><div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                    80%
-                  </div>
-              </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Math</td>
-                <td>1h30min</td>
-              </tr>    
-              <tr><td colspan="2"><div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-                    20%
-                  </div>
-              </div>
-                </td>
-            </tr>
-            </table>
-          </div>
-        </div>
-
-
-          <div class="row">
-              <div class = "col-9 ">
-
-                <div  style="width:50%;height:300px;float:left;">
-                  <div style="background: rgba(40, 130, 231, 0.3);border-radius:10px;width:80%;height:80%;margin:0 auto;">
-                      <table class="table" >
-                          <tr>
+                    <table class="table">
+                        <tr>
                             <th>任务名称</th>
                             <th>任务时长</th>
-                          </tr>
-                          <tr>
-                            <td>Math</td>
+                        </tr>
+                        <tr>
+                            <td>English</td>
                             <td>5h30min</td>
-                          </tr>    
-                          <tr><td>
-                          <a href="startplan.html"><img class="duBtn img-thumbnail" src="/img/startplan.png" width="50px" ></a>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <a href="/UserPage/startplan">
+                                    <img class="duBtn img-thumbnail" src="/img/startplan.png"
+                                         width="50px">
+                                </a>
                             </td>
-                            <td><button class="btn btn-info editMyplan"type="submit">edit</button></td>
-                          </tr>
-                      </table>
-                  </div>
+                        </tr>
+                        <a href="/UserPage/startplan">
+                            <button class="btn btn-info startfirstplan" type="submit"
+                                    style="position:absolute;left:20%;bottom:10%;">start
+                            </button>
+                        </a>
+                        <a href="/UserPage/editplan">
+                            <button class="btn btn-info editMyplan" type="submit"
+                                    style="position:absolute;right:20%;bottom:10%;">edit
+                            </button>
+                        </a>
+
+                    </table>
+
                 </div>
-
-                <div  style="width:50%;height:300px;float:left;">
-                  <div style="background: rgba(40, 130, 231, 0.3);border-radius:10px;width:80%;height:80%;margin:0 auto;"></div>
-                </div>
-              </div>
-
-
-
-
-
-            <div class = "col-3 ">
-            <h4>Not Started</h4>
-            <table class="table">
-              <tr>
-                <th>任务名称</th>
-                <th>任务时长</th>
-              </tr>
-              <tr>
-                <td>Physics</td>
-                <td>1h30min</td>
-              </tr>   
-              <tr>
-                  <td>Chemistry</td>
-                  <td>2h30min</td>
-                </tr>  
-              </table>
-              
             </div>
-          </div>
+            <div class="col-3 ">
+                <h2>Progress</h2>
+                <table class="table">
+                    <tr>
+                        <th>任务名称</th>
+                        <th>任务时长</th>
+                    </tr>
+                    <tr>
+                        <td>English</td>
+                        <td>5h30min</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                     aria-valuemax="100" style="width: 60%;">
+                                    60%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Geometry</td>
+                        <td>4h30min</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                                     aria-valuemax="100" style="width: 80%;">
+                                    80%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Math</td>
+                        <td>1h30min</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                     aria-valuemax="100" style="width: 20%;">
+                                    20%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-      </div>
-  
 
 
+        <div class="row">
+            <div class="col-9 ">
+
+                <div style="width:50%;height:300px;float:left;">
+                    <div style="background: rgba(40, 130, 231, 0.3);border-radius:10px;width:80%;height:80%;margin:0 auto;">
+                        <table class="table">
+                            <tr>
+                                <th>任务名称</th>
+                                <th>任务时长</th>
+                            </tr>
+                            <tr>
+                                <td>Math</td>
+                                <td>5h30min</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="/UserPage/startplan"><img class="duBtn img-thumbnail" src="/img/startplan.png"
+                                                                  width="50px"></a>
+                                </td>
+                                <td>
+                                    <button class="btn btn-info editMyplan" type="submit">edit</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="width:50%;height:300px;float:left;">
+                    <div style="background: rgba(40, 130, 231, 0.3);border-radius:10px;width:80%;height:80%;margin:0 auto;"></div>
+                </div>
+            </div>
 
 
+            <div class="col-3 ">
+                <h4>Not Started</h4>
+                <table class="table">
+                    <tr>
+                        <th>任务名称</th>
+                        <th>任务时长</th>
+                    </tr>
+                    <tr>
+                        <td>Physics</td>
+                        <td>1h30min</td>
+                    </tr>
+                    <tr>
+                        <td>Chemistry</td>
+                        <td>2h30min</td>
+                    </tr>
+                </table>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="/js/sb-admin.min.js"></script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/js/sb-admin.min.js"></script>
 
 </body>
 
 </html>
 
 
-
 <script>
     var btn = document.getElementById("myBtn");
     var modal = document.getElementById("myModal");
     var close = document.querySelector(".closePic");
-    btn.onclick = function(){
-    modal.style.display = "block";
+    btn.onclick = function () {
+        modal.style.display = "block";
     }
-    close.onclick = function(){
-    modal.style.display = "none";
+    close.onclick = function () {
+        modal.style.display = "none";
     }
-  </script>
+</script>
 
 <script>
     var timelen = document.querySelector('.timeLength');
-    var ji =document.querySelector('.jishi');
-    var dao =document.querySelector('.daojishi');
-    
-    ji.onclick = function(){
-      timelen.style.visibility="hidden";
+    var ji = document.querySelector('.jishi');
+    var dao = document.querySelector('.daojishi');
+
+    ji.onclick = function () {
+        timelen.style.visibility = "hidden";
     }
-    
-    dao.onclick = function(){
-      timelen.style.visibility="visible";
+
+    dao.onclick = function () {
+        timelen.style.visibility = "visible";
     }
-    </script>
+</script>
 <!-- 
 <script>
   // 获取弹窗
