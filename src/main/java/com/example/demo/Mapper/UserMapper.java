@@ -20,4 +20,5 @@ public interface UserMapper {
     @Insert("INSERT INTO user_info (User_name,User_pwd,User_sex,User_eamil,User_tagSchool,User_slogan,Tasks_ID) values(#{User_name},#{User_pwd},#{User_sex},#{User_email},#{User_tagSchool},#{User_slogan},#{Tasks_ID}")
     Integer register(User user);
 
+
 }

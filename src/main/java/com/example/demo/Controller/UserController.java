@@ -35,7 +35,7 @@ public class UserController {
     @PostMapping("/register")
     public String getRegister(User user){
         userService.register(user);
-        return "redirect:/UserPage/register";
+        return "redirect:/UserPage/userLogin";
     }
     @GetMapping("/allplan")
     public String getAllPlanPage(Model model){
@@ -51,13 +51,17 @@ public class UserController {
             tasks.add(task);
         }
 
-
         model.addAttribute("user",user);
         model.addAttribute("tasks",tasks);
 
-        return "test1";
+        return "allplan";
     }
 
+
+    @GetMapping("/testPage")
+    public String testPage() {
+        return "allplan";
+    }
 
     @GetMapping("/login")
     public String loginByUserNameAndPwd(){
@@ -74,6 +78,7 @@ public class UserController {
             System.out.println("用户名或密码错误！");
             return "login";
         }
+
     }
 
 
