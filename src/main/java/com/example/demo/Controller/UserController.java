@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -40,9 +41,10 @@ public class UserController {
         User user = userService.findUserByID(1);
         String[] tasksID = user.getTasks_ID().split(",");
 
-        List<Task> tasks = null;
+        List<Task> tasks = new ArrayList<>();
 
         for(int i=0;i<tasksID.length;i++){
+            System.out.println(tasksID[i]);
             Task task = taskService.findTaskByID(Integer.parseInt(tasksID[i]));
             tasks.add(task);
         }
@@ -53,4 +55,5 @@ public class UserController {
 
         return "test1";
     }
+
 }
