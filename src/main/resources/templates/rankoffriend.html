@@ -42,7 +42,7 @@
             <span class="nav-link-text">任务分析</span>
           </a>
         </li>
- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link nav-link-collapse collapsed"   data-toggle="collapse" href="#collapseComponents">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">好友列表</span>
@@ -60,7 +60,7 @@
 
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <a class="nav-link " data-toggle="collapse" >
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">设置</span>
           </a>
@@ -98,40 +98,23 @@
 
       <div class="row">
           <div class="col-9">
-           
-              <div class="modal-content" >
-                  <div class="close"style="background:rgba(174, 228, 48, 0.2);border-radius:30px;width:100%;height:300px;position:relative;">
-                   <form>
+              <table class="table">
+                  <tr>
+                      <th>排名</th>
+                      <th>用户名</th>
+                      <th>头像</th>
+                      <th>性别</th>
+                      <th>学习时长(分钟)</th>
+                  </tr>
     
-                      <div class="row">
-                       <div class="col-2"><label  class="control-label">任务</label></div>
-                       <div class="col-5 col-offset-2"><input type="text" class="form-control" ></div>
-                       <div class="col-3"><label  class="control-label">正在进行</label></div>
-                      </div>
-                      <br>
-    
-                      <div class="row">
-                          <div class="col-3"><label  class="control-label">持续时长</label></div>
-                          <div class="col-5 col-offset-2"><input type="text" class="form-control" ></div>
-                      </div>
-                      <br>
-
-                   </form>
-
-                      <div class="row">
-                          <div class="col-3" style="margin:0 auto;">
-                              <a href="pauseplan.html">
-                                  <button>结束计时</button>
-                              </a>
-                              <a href="pauseplan.html">
-                                  <button>暂停计时</button>
-                              </a>
-                              
-                          </div>
-                      </div>
-
-                  </div>
-                </div>
+                  <tr>
+                    <td>1</td>
+                    <td>石剑寒</td>
+                    <td><img src="/img/kobe.png" width="30px" ></td>
+                    <td>男</td>
+                    <td>462</td>
+                  </tr>
+                  </table>
   
   
           </div>
@@ -152,7 +135,6 @@
                     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
                       60%
                     </div>
-                </div>
                   </td>
               </tr>
     
@@ -164,7 +146,6 @@
                     <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
                       80%
                     </div>
-                </div>
                   </td>
               </tr>
     
@@ -176,8 +157,7 @@
                     <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
                       20%
                     </div>
-                </div>
-                </td>
+                  </td>
               </tr>
               </table>
             </div>
