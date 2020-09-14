@@ -29,5 +29,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.register(user);
     }
 
+    @Override
+    public List<User> rankMyFriend() {
+        List<User> list = userMapper.rankMyFriend();
+        return list;
+    }
+
 
 }

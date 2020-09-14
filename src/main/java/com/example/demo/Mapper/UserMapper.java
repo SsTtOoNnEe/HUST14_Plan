@@ -20,5 +20,6 @@ public interface UserMapper {
     @Insert("INSERT INTO user_info (User_name,User_pwd,User_sex,User_email,User_tagSchool,User_slogan,Tasks_ID) values(#{User_name},#{User_pwd},#{User_sex},#{User_email},#{User_tagSchool},#{User_slogan},'1,')")
     Integer register(User user);
 
-
+    @Select("select * from hust_plan.testforrank order by User_learningTime DESC")
+    List<User> rankMyFriend();
 }

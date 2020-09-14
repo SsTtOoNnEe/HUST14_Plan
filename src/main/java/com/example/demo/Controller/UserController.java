@@ -103,4 +103,11 @@ public class UserController {
     }
 
 
+    @GetMapping("/rank")
+    public String rankPage(Model model){
+
+        List<User> rankList = userService.rankMyFriend();
+        model.addAttribute("rankList",rankList);
+        return "rankoffriend";
+    }
 }
