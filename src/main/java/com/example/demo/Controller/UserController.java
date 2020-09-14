@@ -51,7 +51,6 @@ public class UserController {
             tasks.add(task);
         }
 
-
         model.addAttribute("user",user);
         model.addAttribute("tasks",tasks);
 
