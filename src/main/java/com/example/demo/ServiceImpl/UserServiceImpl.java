@@ -20,6 +20,9 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
+    @Override
+    public Integer register(User user) {
+        return userMapper.register(user);
+    }
 
 }

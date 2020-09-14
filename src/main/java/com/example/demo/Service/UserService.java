@@ -8,6 +8,9 @@ public interface UserService {
 
     User findUserByID(Integer User_ID);
 
+    Integer register(User user);
+
+
 
 
 }
