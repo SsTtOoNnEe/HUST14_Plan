@@ -10,4 +10,7 @@ public interface UserService {
 
     User getPwdByUserName(String User_name,String User_pwd);
 
+    Integer register(User user);
+
+
 }

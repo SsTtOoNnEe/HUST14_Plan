@@ -24,5 +24,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.getPwdByUserName(User_name,User_pwd);
     }
 
+    @Override
+    public Integer register(User user) {
+        return userMapper.register(user);
+    }
+
 
 }
