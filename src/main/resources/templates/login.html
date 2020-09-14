@@ -9,11 +9,11 @@
   <meta name="author" content="">
   <title>SB Admin - Start Bootstrap Template</title>
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="/css/sb-admin.css" rel="stylesheet">
 </head>
 
 <style>
@@ -40,23 +40,35 @@
       <div class="form-row">
         <div class="col-lg-8">
           <div class="card-body">
-            <form>
+
+            <form method="post" action="/UserPage/selectPwd">
               <div class="form-group">
                 <label for="exampleInputEmail1">用户名</label>
-                <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="user_name">
+                <input class="form-control" name="UserName" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="user_name">
+
               </div>
+
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input class="form-control" id="exampleInputPassword1" type="password" placeholder="******">
+
+                <input class="form-control" name="UserPwd" id="exampleInputPassword1" type="password" placeholder="******">
+
               </div>
+
               <div class="form-group">
                 <div class="form-check">
                   <label class="form-check-label">
                     <input class="form-check-input" type="checkbox">记住密码</label>
                 </div>
               </div>
-              <a class="btn btn-primary btn-block" href="index.html">登录</a>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-info">登录</button>
+              </div>
+
+
             </form>
+
             <div class="form-row">
               <div class="col-md-6">
                 <a class="d-block small mt-3" href="user_register.html">用户注册</a>
@@ -92,10 +104,10 @@
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
 
 </html>

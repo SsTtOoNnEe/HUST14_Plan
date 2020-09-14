@@ -9,11 +9,11 @@
   <meta name="author" content="">
   <title>SB Admin - Start Bootstrap Template</title>
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="/css/sb-admin.css" rel="stylesheet">
   <link href="/css/bootstrap.css" rel="stylesheet" />
 </head>
 
@@ -22,7 +22,7 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">用户注册</div>
       <div class="card-body">
-        <form>
+        <form action="/UserPage/register" method="post">
           <div class="form-group">
             <div style="text-align:center;">
               <img id="imgshow" src="wqrqew.jpg" class="img-thumbnail" style="float:center"/>
@@ -38,7 +38,7 @@
             <!-- <div class="form-row"> -->
               <!-- <div class="col-md-12"> -->
                 <label for="exampleInputName">用户名</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="输入用户名">
+                <input class="form-control" name="User_name" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="输入用户名">
               </div>
               <!-- <div class="col-md-6">
                 <label for="exampleInputLastName">Last name</label>
@@ -48,44 +48,44 @@
           <!-- </div> -->
           <div class="form-group">
             <label for="exampleInputEmail1">密码</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" aria-describedby="passwordHelp" placeholder="输入密码">
+            <input class="form-control" name="User_pwd" id="exampleInputPassword1" type="password" aria-describedby="passwordHelp" placeholder="输入密码">
           </div>
 
-          <div class="form-group">
-            <label for="exampleInputName">姓名</label>
-            <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="输入姓名">
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label for="exampleInputName">姓名</label>-->
+<!--            <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="输入姓名">-->
+<!--          </div>-->
           <div class="form-group">
             <label for="exampleInputName">性别</label>
             <div class="col-sm-8">
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 男
+                <input type="radio" name="User_sex" id="inlineRadio1" value="1"> 男
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
+                <input type="radio" name="User_sex" id="inlineRadio2" value="0"> 女
               </label>
           </div>
           
           <div class="form-group">
             <label for="exampleInputName">电话号码</label>
-            <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp">
+            <input class="form-control" name="User_phone" id="exampleInputName" type="text" aria-describedby="nameHelp">
           </div>
 
           <div class="form-group">
             <label for="exampleInputEmail1">电子邮箱</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp">
+            <input class="form-control" name="User_email" id="exampleInputEmail1" type="email" aria-describedby="emailHelp">
           </div>
 
           <div class="form-group">
             <label for="exampleInputName">目标院校</label>
-            <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp">
+            <input class="form-control" name="User_tagSchool" id="exampleInputName" type="text" aria-describedby="nameHelp">
           </div>
 
           <div class="form-group">
             <label for="exampleInputName">个人简介</label>
             <!-- <div class="col-sm-8"> -->
           <div>
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea class="form-control" name="User_slogan" rows="3"></textarea>
             </div>
           </div>
 
@@ -104,12 +104,15 @@
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
-                <a class="btn btn-primary btn-block" href="login.html">完成注册</a>
+<!--                <a class="btn btn-primary btn-block"  href="login.html">完成注册</a>-->
+                <button type="submit" class="btn btn-primary">添加学生</button>
               </div>
               <div class="col-md-6">
-                <a class="btn btn-primary btn-block" href="login.html">返回</a>
+<!--                <a class="btn btn-primary btn-block" href="login.html">返回</a>-->
+                <button type="submit" class="btn btn-primary">添加学生</button>
               </div>
             </div>
+          </div>
           </div>
         </form>
         <!-- <div class="text-center">
@@ -120,10 +123,10 @@
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
 
 </html>
