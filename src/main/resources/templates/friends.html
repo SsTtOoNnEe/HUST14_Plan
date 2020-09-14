@@ -42,7 +42,7 @@
             <span class="nav-link-text">任务分析</span>
           </a>
         </li>
- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link nav-link-collapse collapsed"   data-toggle="collapse" href="#collapseComponents">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">好友列表</span>
@@ -60,7 +60,7 @@
 
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <a class="nav-link " data-toggle="collapse" >
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">设置</span>
           </a>
@@ -83,7 +83,7 @@
       <div class="row">
         <div class="col-9">
 
-                
+          
 
         </div>
 
@@ -98,43 +98,26 @@
 
       <div class="row">
           <div class="col-9">
-           
+            <table class="table">
+              <tr>
+                  <th>好友名</th>
+                  <th>头像</th>
+                  <th>性别</th>
+                  <th>出生日期</th>
+                  <th>电子邮箱</th>
+                  <th>操作</th>
+              </tr>
+
+              <tr>
+                <td>石剑寒</td>
+                <td><img src="/img/kobe.png" width="30px" ></td>
+                <td>男</td>
+                <td>1998/3/26</td>
+                <td>stone@qq.com</td>
+                <td><a href="#">查看</a>/<a href="#">删除</a></td>
+              </tr>
+              </table>
   
-              <div class="modal-content">
-                  <div style="background:rgba(48, 222, 228, 0.2);border-radius:30px;width:100%;height:300px;position:relative;">
-                    <form>
-                  <div class="row">
-                    <div class="col-3"><label  class="control-label">任务</label></div>
-                    <div class="col-6 col-ffset-2">
-                      <input type="text" class="form-control" placeholder="TaskName">
-                    </div>
-                    <div class=col-3><p>暂停中</p></div>
-                  </div>
-
-                 <br>
-
-
-                  <div class="row">
-                    <div class="col-3"><label for="inputEmail3" class="control-label">剩余时长</label></div>
-                    <div class="col-6 col-ffset-2">
-                      <input type="time" class="form-control" id="inputEmail3" placeholder="LeftTime">
-                    </div>
-                  </div>
-
-                  <br>
-                  <br>
-                  
-                  <div class="row">
-                    <div class="col-6">
-                      <button type="submit" class="btn btn-info" >继续任务</button>
-                    </div>
-                    <div class="col-6">
-                      <button type="submit" class="btn btn-info endPlan" >结束任务</button>
-                    </div>
-                  </div>
-                </form>
-                </div>
-              </div>
   
           </div>
 
