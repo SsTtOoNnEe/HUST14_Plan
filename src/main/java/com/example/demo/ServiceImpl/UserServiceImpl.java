@@ -35,5 +35,10 @@ public class UserServiceImpl implements UserService {
         return list;
     }
 
+    @Override
+    public Integer updateUserTasksID(String Tasks_ID, String User_name) {
+        return userMapper.updateUserTasksID(Tasks_ID,User_name);
+    }
+
 
 }
