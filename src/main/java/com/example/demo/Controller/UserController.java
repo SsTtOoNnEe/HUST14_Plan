@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class UserController {
     @PostMapping("/register")
     public String getRegister(User user){
         userService.register(user);
-        return "redirect:/UserPage/register";
+        return "redirect:/UserPage/userLogin";
     }
     @GetMapping("/allplan")
     public String getAllPlanPage(Model model){
@@ -53,14 +54,19 @@ public class UserController {
         model.addAttribute("user",user);
         model.addAttribute("tasks",tasks);
 
-<<<<<<< HEAD
         return "test1";
     }
 
-    @PostMapping("/userLogin")
+    @GetMapping("/userLogin")
     public String userLogin(){
-        User user = userService.findUserByName("");
-        return "test1";
+        return "login";
+    }
+
+    @PostMapping("/userLogin")
+    public String userLogin(String User_name,String User_pwd){
+        User user = userService.findUserByName(User_name);
+        System.out.println(user.getUser_pwd());
+        return "allplan";
     }
 
 
@@ -68,11 +74,6 @@ public class UserController {
     public String testPage(){
         return "login";
     }
-    
 
-=======
-        return "test1";
-    }
 
->>>>>>> b9a48136c9d17921ac2093ba548dc8666651fee8
 }
