@@ -8,6 +8,6 @@ public interface UserService {
 
     User findUserByID(Integer User_ID);
 
-
+    String findUserPWD(String User_Name);
 
 }

@@ -46,6 +46,9 @@ public class UserController {
         return "test1";
     }
 
-
+    @GetMapping("/login")
+    public String loginByUserNameAndPwd(){
+        String
+    }
 
 }
