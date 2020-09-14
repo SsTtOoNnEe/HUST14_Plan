@@ -100,7 +100,7 @@
           <div class="col-9">
            
               <div class="modal-content" >
-                  <div class="close"style="background:rgba(174, 228, 48, 0.2);border-radius:30px;width:100%;height:300px;position:relative;">
+                  <div style="background:rgba(174, 228, 48, 0.2);border-radius:30px;width:100%;height:300px;position:relative;">
                    <form>
     
                       <div class="row">
@@ -119,22 +119,49 @@
                    </form>
 
                       <div class="row">
-                          <div class="col-3" style="margin:0 auto;">
-                              <a href="pauseplan.html">
-                                  <button>结束计时</button>
-                              </a>
-                              <a href="pauseplan.html">
-                                  <button>暂停计时</button>
-                              </a>
-                              
-                          </div>
+                        <div class="col-6">
+                          <button type="submit" class="btn btn-info" >暂停计时</button>
+                        </div>
+                        <div class="col-6">
+                          <button type="button" class="btn btn-info endPlan" >结束计时</button>
+                        </div>
                       </div>
+
+                      <div id="myModal" class="modal" style="margin:0 auto;display: none; position: fixed;z-index: 1;left: 0;top: 0;width: 50%; height: 100%;border-radius: 20px;
+                      overflow: auto; background-color: rgb(252, 249, 249); background-color: rgba(241, 238, 238, 0.4); ">
+                        <div class="modal-content" style="background-color: #4ee9499a;margin: 15% auto; padding: 30px;border-radius: 20px;width: 50%; ">
+                
+                          <div style="float:right;"><span class="close" style="color:  	#fd0000;float: right;font-size: 30px;font-weight: bold;">&times;</span></div>
+                          <div class="form-group">
+                            <br/>
+                            <br/>
+                            <div class="text-center"><h2>是否退出该任务?</h2></div> 
+                            
+                            <br/> 
+                            <br/> 
+
+                          </div>
+                          <div class="row">
+                            <div class="col-3" style="margin:0 auto;">
+                                <button type="submit" class="btn btn-info">残忍退出</button></div>
+                                
+                                <div class="col-3" style="margin:0 auto;">
+                                  <button type="button" class="btn btn-info jixu">继续进行</button></div>
+                            
+                        </div>
+                
+                        </div>
+                      </div>
+
+
+                   </form>                  
 
                   </div>
                 </div>
   
   
           </div>
+
 
 
           <div class = "col-3 ">
@@ -214,7 +241,11 @@
 
       </div>
     </div>
-  </div>
+
+   
+
+
+
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -226,3 +257,30 @@
 </body>
 
 </html>
+
+<script>
+  var jxq=document.getElementById("myModal");
+  var list=document.getElementsByClassName("endPlan");
+  var span = document.querySelector('.close');
+    var btn =document.getElementsByClassName("jixu");
+    
+    for(var i in btn){
+      btn[i].onclick=function(){
+        jxq.style.display="none";
+      }
+    }
+
+     
+   // 点击 <span> (x), 关闭弹窗
+   span.onclick = function() {
+       jxq.style.display = "none";
+   }
+  for(var i in list){
+    list[i].onclick=function(){
+      jxq.style.display="block";
+    }
+  }
+</script>
+
+
+
