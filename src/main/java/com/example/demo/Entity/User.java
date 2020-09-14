@@ -12,6 +12,15 @@ public class User {
     private String User_slogan;
     private String Tasks_ID;
     private String User_phone;
+    private Integer User_learningTime;
+
+    public Integer getUser_learningTime() {
+        return User_learningTime;
+    }
+
+    public void setUser_learningTime(Integer user_learningTime) {
+        User_learningTime = user_learningTime;
+    }
 
     public String getUser_phone() {
         return User_phone;

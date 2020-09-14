@@ -107,12 +107,12 @@
                       <th>学习时长(分钟)</th>
                   </tr>
     
-                  <tr>
-                    <td>1</td>
-                    <td>石剑寒</td>
+                  <tr th:each="User,userStat:${rankList}">
+                    <td th:text="${userStat.index+1}">1</td>
+                    <td th:text="${User.User_name}">石剑寒</td>
                     <td><img src="/img/kobe.png" width="30px" ></td>
                     <td>男</td>
-                    <td>462</td>
+                    <td th:text="${User.User_learningTime}">462</td>
                   </tr>
                   </table>
   
