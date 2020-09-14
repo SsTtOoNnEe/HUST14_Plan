@@ -25,7 +25,16 @@ public class UserController {
     @Autowired
     TaskService taskService;
 
+    @GetMapping("/register")
+    public String getRegister(){
+        return "user_register";
+    }
 
+    @PostMapping("/register")
+    public String getRegister(User user){
+        userService.register(user);
+        return "redirect:/UserPage/register";
+    }
     @GetMapping("/allplan")
     public String getAllPlanPage(Model model){
 
@@ -44,6 +53,7 @@ public class UserController {
         model.addAttribute("user",user);
         model.addAttribute("tasks",tasks);
 
+<<<<<<< HEAD
         return "test1";
     }
 
@@ -60,4 +70,9 @@ public class UserController {
     }
     
 
+=======
+        return "test1";
+    }
+
+>>>>>>> b9a48136c9d17921ac2093ba548dc8666651fee8
 }
