@@ -13,5 +13,6 @@ public interface UserMapper {
     @Select("SELECT * FROM hust_plan.user_info where User_ID=${User_ID}")
     User findUserByID(Integer User_ID);
 
-
+    @Select("SELECT * FROM hust_plan.user_info where User_name=#{User_name}")
+    User getPwdByUserName(@Param("User_name") String User_name,@Param("User_pwd") String User_pwd);
 }
