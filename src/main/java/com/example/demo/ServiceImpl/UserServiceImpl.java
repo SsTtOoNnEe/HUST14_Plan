@@ -19,8 +19,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.findUserByID(User_ID);
     }
 
+
     @Override
     public Integer register(User user) {
         return userMapper.register(user);
     }
+
 }
