@@ -6,7 +6,16 @@ import java.util.Date;
 public class User {
     private String User_name;
     private String User_pwd;
-    private Integer User_sex;
+
+    public boolean isUser_sex() {
+        return User_sex;
+    }
+
+    public void setUser_sex(boolean user_sex) {
+        User_sex = user_sex;
+    }
+
+    private boolean User_sex;
     private Date User_bir;
     private String User_email;
     private String User_tagSchool;
@@ -63,21 +72,21 @@ public class User {
         User_pwd = user_pwd;
     }
 
+
+    public String getUser_bir() {
+        if(User_bir==null){
+            return null;
+        }
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(User_bir);
+    }
+  
     public Integer getUser_sex() {
         return User_sex;
     }
 
     public void setUser_sex(Integer user_sex) {
         User_sex = user_sex;
-    }
-
-    public String getUser_bir() {
-        if(User_bir == null) {
-            return "2099-12-12";
-        }
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String birthday = sdf.format(User_bir);
-        return birthday;
     }
 
     public void setUser_bir(Date user_bir) {
