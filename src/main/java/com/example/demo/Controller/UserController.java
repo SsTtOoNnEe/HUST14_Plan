@@ -107,8 +107,8 @@ public class UserController {
 
 
     @GetMapping("/testPage")
-    public String testPage() {
-        return "allplan";
+    public String testPage(Model model) {
+        return null;
     }
 
 
@@ -130,6 +130,13 @@ public class UserController {
         Integer j = userService.updateUserTasksID(tasks_id,User_name);
 
         return "redirect:/UserPage/allplan/"+User_name;
+    }
+
+    @GetMapping("/friendlist")
+    public String friendList(Model model) {
+        List<User> users = userService.getAllUser();
+        model.addAttribute("users",users);
+        return "addfriend";
     }
 
     @GetMapping("/startplan")
