@@ -108,13 +108,12 @@ public class UserController {
 
     @GetMapping("/testPage")
     public String testPage() {
-        return "allplan";
+        return "blank";
     }
 
 
     @GetMapping("/rank")
     public String rankPage(Model model) {
-
         List<User> rankList = userService.rankMyFriend();
         model.addAttribute("rankList", rankList);
         return "rankoffriend";
