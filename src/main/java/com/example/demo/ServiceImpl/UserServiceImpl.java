@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer updateLeftTime(String taskId,String leftTime) {
+    public Integer updateLeftTime(Integer taskId,String leftTime) {
         return userMapper.updateLeftTime(taskId,leftTime);
     }
 

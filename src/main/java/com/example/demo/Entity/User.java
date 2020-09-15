@@ -81,13 +81,7 @@ public class User {
         return sdf.format(User_bir);
     }
   
-    public Integer getUser_sex() {
-        return User_sex;
-    }
 
-    public void setUser_sex(Integer user_sex) {
-        User_sex = user_sex;
-    }
 
     public void setUser_bir(Date user_bir) {
         User_bir = user_bir;

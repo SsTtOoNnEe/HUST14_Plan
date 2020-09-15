@@ -161,17 +161,13 @@ public class UserController {
 
     @PostMapping("/testPage")
     public String postPauseTime(String taskId,String leftTime){
-        userService.updateLeftTime(taskId,leftTime);
+        Integer id = Integer.parseInt(taskId);
+        userService.updateLeftTime(id,leftTime);
         return "redirect:/UserPage/pause/"+taskId;
     }
 
 
 
-    @GetMapping("/addfriends/{User_name}")
-    public String addFriends(@PathVariable("User_name") String User_name,Model model){
-        User user = userService.findUserByName(User_name);
-        model.addAttribute("user",user);
-        return "addfriend";
-    }
+
 
 }

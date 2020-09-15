@@ -36,13 +36,12 @@ public interface UserMapper {
 
 
     @Update("update task_info set Task_leftTime=#{leftTime} where Task_ID=#{taskId}")
-    Integer updateLeftTime(@Param("taskId") String taskId,@Param("leftTime") String leftTime);
+    Integer updateLeftTime(@Param("taskId") Integer taskId,@Param("leftTime") String leftTime);
 
     @Update("update user_info set User_pwd=#{User_pwd},User_sex=#{User_sex},User_bir=#{User_bir},User_phone=#{User_phone},User_email=#{User_email},User_tagSchool=#{User_tagSchool},User_slogan=#{User_slogan} where User_name=#{User_name};")
     Integer updateUserByName(User user);
 
-    @Update("update task_info set Task_leftTime=#{leftTime}")
-    Integer updateLeftTime(String leftTime);
+
 
 
 
