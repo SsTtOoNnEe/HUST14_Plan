@@ -111,7 +111,7 @@ public class UserController {
         return "rankoffriend";
     }
 
-    @PostMapping("add/{User_name}")
+    @PostMapping("addplan/{User_name}")
     public String addNewPlan(@PathVariable("User_name") String User_name, Task task){
 
         Integer i = taskService.addTask(task);
@@ -136,5 +136,12 @@ public class UserController {
     @GetMapping("/pauseplan")
     public String getPausePlan(){
         return "pauseplan";
+    }
+
+    @GetMapping("/addfriends/{User_name}")
+    public String addFriends(@PathVariable("User_name") String User_name,Model model){
+        User user = userService.findUserByName(User_name);
+        model.addAttribute("user",user);
+        return "addfriend";
     }
 }
