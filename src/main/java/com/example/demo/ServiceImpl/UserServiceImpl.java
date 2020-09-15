@@ -51,5 +51,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateUserTasksID(Tasks_ID,User_name);
     }
 
+    @Override
+    public Integer updateLeftTime(String leftTime) {
+        return userMapper.updateLeftTime(leftTime);
+    }
+
 
 }
