@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="utf-8">
@@ -31,13 +31,13 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="allplan.html">
+          <a class="nav-link" th:href="@{'/UserPage/allplan/'+${user.User_name}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">所有任务</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="testchart.html">
+          <a class="nav-link" th:href="@{'/UserPage/analysis/'+${user.User_name}}">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">任务分析</span>
           </a>
@@ -102,7 +102,6 @@
               <div class="modal-content" >
                   <div style="background:rgba(174, 228, 48, 0.2);border-radius:30px;width:100%;height:300px;position:relative;">
                    <form>
-    
                       <div class="row">
                        <div class="col-2"><label  class="control-label">任务</label></div>
                        <div class="col-5 col-offset-2"><input type="text" class="form-control" ></div>
@@ -152,9 +151,6 @@
                 
                         </div>
                       </div>
-
-
-                   </form>                  
 
                   </div>
                 </div>

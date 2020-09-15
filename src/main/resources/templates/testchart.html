@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="utf-8">
@@ -55,12 +55,14 @@
 
 
       </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-          <i class="fa fa-fw fa-wrench"></i>
+
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <a class="nav-link" th:href="@{'/UserPage/settings/'+${user.User_name}}">
+          <i class="fa fa-fw fa-area-chart"></i>
           <span class="nav-link-text">设置</span>
         </a>
       </li>
+
     </ul>
 
   </div>

@@ -72,12 +72,21 @@ public class User {
         User_pwd = user_pwd;
     }
 
+
     public String getUser_bir() {
         if(User_bir==null){
             return null;
         }
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(User_bir);
+    }
+  
+    public Integer getUser_sex() {
+        return User_sex;
+    }
+
+    public void setUser_sex(Integer user_sex) {
+        User_sex = user_sex;
     }
 
     public void setUser_bir(Date user_bir) {

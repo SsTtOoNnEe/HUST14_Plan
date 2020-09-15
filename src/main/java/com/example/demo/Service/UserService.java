@@ -11,6 +11,8 @@ public interface UserService {
 
     User getPwdByUserName(String User_name,String User_pwd);
 
+    List<User> getAllUser();
+
     Integer register(User user);
 
 
@@ -24,5 +26,5 @@ public interface UserService {
 
     Integer updateUserTasksID(String Tasks_ID,String User_name);
 
-
+    Integer updateLeftTime(String leftTime);
 }

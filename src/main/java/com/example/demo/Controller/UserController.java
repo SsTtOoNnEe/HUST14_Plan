@@ -40,7 +40,7 @@ public class UserController {
                 //return "redirect"
             }
         }
-        return "redirect:/UserPage/register";
+        return "redirect:/UserPage/login";
 
     }
 
@@ -91,12 +91,6 @@ public class UserController {
         return "testchart";
     }
 
-    @GetMapping("/friends/{User_name}")
-    public String getUserFriends(@PathVariable("User_name") String User_name, Model model) {
-        User user = userService.findUserByName(User_name);
-        model.addAttribute("user", user);
-        return "friends";
-    }
 
     @GetMapping("/settings/{User_name}")
     public String getUserSettings(@PathVariable("User_name") String User_name, Model model) {
@@ -120,13 +114,12 @@ public class UserController {
 
     @GetMapping("/rank")
     public String rankPage(Model model) {
-
         List<User> rankList = userService.rankMyFriend();
         model.addAttribute("rankList", rankList);
         return "rankoffriend";
     }
 
-    @PostMapping("add/{User_name}")
+    @PostMapping("addplan/{User_name}")
     public String addNewPlan(@PathVariable("User_name") String User_name, Task task){
 
         Integer i = taskService.addTask(task);
@@ -136,6 +129,16 @@ public class UserController {
         Integer j = userService.updateUserTasksID(tasks_id,User_name);
 
         return "redirect:/UserPage/allplan/"+User_name;
+    }
+
+    @GetMapping("addfriends/{User_name}")
+    public String friendList(@PathVariable("User_name")String User_name, Model model) {
+        User user = userService.findUserByName(User_name);
+        List<User> users = userService.getAllUser();
+
+        model.addAttribute("users",users);
+        model.addAttribute("user",user);
+        return "addfriend";
     }
 
     @GetMapping("/startplan")
@@ -148,8 +151,17 @@ public class UserController {
         return "editplan";
     }
 
-    @GetMapping("/pauseplan")
+    @GetMapping("/pause")
     public String getPausePlan(){
         return "pauseplan";
     }
+
+
+    @PostMapping("/testPage")
+    public String postPauseTime(String leftTime){
+        userService.updateLeftTime(leftTime);
+        return "redirect:/UserPage/pause";
+    }
+
+
 }
