@@ -141,8 +141,16 @@ public class UserController {
         return "editplan";
     }
 
-    @GetMapping("/pauseplan")
+    @GetMapping("/pause")
     public String getPausePlan(){
         return "pauseplan";
     }
+
+
+    @PostMapping("/testPage")
+    public String postPauseTime(String leftTime){
+        userService.updateLeftTime(leftTime);
+        return "redirect:/UserPage/pause";
+    }
+
 }
