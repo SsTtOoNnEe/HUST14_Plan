@@ -131,6 +131,13 @@ public class UserController {
         return "redirect:/UserPage/allplan/"+User_name;
     }
 
+    @GetMapping("/friendlist")
+    public String friendList(Model model) {
+        List<User> users = userService.getAllUser();
+        model.addAttribute("users",users);
+        return "addfriend";
+    }
+
     @GetMapping("/startplan")
     public String getStartPlan(){
         return "startplan";

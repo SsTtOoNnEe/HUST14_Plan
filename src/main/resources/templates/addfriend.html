@@ -118,12 +118,12 @@
                       <th>操作</th>
                   </tr>
     
-                  <tr>
-                    <td>石剑寒</td>
+                  <tr th:each="User:${users}">
+                    <td th:text="${User.User_name}">石剑寒</td>
                     <td><img src="/img/kobe.png" width="30px" ></td>
-                    <td>男</td>
-                    <td>1998/3/26</td>
-                    <td>stone@qq.com</td>
+                      <td th:text="${User.User_sex}==1?'男':'女'">男</td>
+                    <td th:text=" ${#dates.format(User.User_bir,'yyyy/MM/dd')}">1998/3/26</td>
+                    <td th:text="${User.User_email}">stone@qq.com</td>
                     <td><a href="#">查看</a>/<a href="#">添加</a></td>
                   </tr>
                   </table>
