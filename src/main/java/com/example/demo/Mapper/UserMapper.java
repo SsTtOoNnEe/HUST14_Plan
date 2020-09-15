@@ -1,10 +1,8 @@
 package com.example.demo.Mapper;
 
+import com.example.demo.Entity.Task;
 import com.example.demo.Entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
@@ -12,11 +10,15 @@ import java.util.Map;
 @Mapper
 public interface UserMapper {
 
-    @Select("SELECT * FROM hust_plan.user_info where User_ID=${User_ID}")
-    User findUserByID(Integer User_ID);
+    @Select("SELECT * FROM hust_plan.user_info where User_name=#{User_name}")
+    User findUserByName(String User_name);
 
-    @Insert("INSERT INTO user_info (User_name,User_pwd,User_sex,User_phone,User_email,User_tagSchool,User_slogan,Tasks_ID) values(#{User_name},#{User_pwd},#{User_sex},#{User_phone},#{User_email},#{User_tagSchool},#{User_slogan},#{Tasks_ID})\n")
+    @Select("SELECT * FROM hust_plan.user_info where User_name=#{User_name}")
+    User getPwdByUserName(@Param("User_name") String User_name,@Param("User_pwd") String User_pwd);
+
+    @Insert("INSERT INTO user_info (User_name,User_pwd,User_sex,User_email,User_tagSchool,User_slogan,Tasks_ID) values(#{User_name},#{User_pwd},#{User_sex},#{User_email},#{User_tagSchool},#{User_slogan},'1,')")
     Integer register(User user);
+
 
     @Select("select User_name from user_info")
     List<String> getAllName();
@@ -24,5 +26,12 @@ public interface UserMapper {
     /*@Select("select User_name,time from user_info"){
         Map<String,Integer> getAll();
     }*/
+
+
+    @Select("select * from hust_plan.testforrank order by User_learningTime DESC")
+    List<User> rankMyFriend();
+
+    @Update("update user_info set Tasks_ID=#{Tasks_ID} where User_name=#{User_name}")
+    Integer updateUserTasksID(@Param("Tasks_ID") String Tasks_ID,@Param("User_name") String User_name);
 
 }

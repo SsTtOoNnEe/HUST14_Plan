@@ -15,10 +15,14 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public User findUserByID(Integer User_ID) {
-        return userMapper.findUserByID(User_ID);
+    public User findUserByName(String User_name) {
+        return userMapper.findUserByName(User_name);
     }
 
+    @Override
+    public User getPwdByUserName(String User_name, String User_pwd) {
+        return userMapper.getPwdByUserName(User_name,User_pwd);
+    }
 
     @Override
     public Integer register(User user) {
@@ -26,8 +30,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+
     public List<String> getAllName() {
         return userMapper.getAllName();
     }
+
+
+    public List<User> rankMyFriend() {
+        List<User> list = userMapper.rankMyFriend();
+        return list;
+    }
+
+    @Override
+    public Integer updateUserTasksID(String Tasks_ID, String User_name) {
+        return userMapper.updateUserTasksID(Tasks_ID,User_name);
+    }
+
 
 }
