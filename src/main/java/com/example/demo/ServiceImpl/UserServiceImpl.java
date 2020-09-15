@@ -61,5 +61,15 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateLeftTime(leftTime);
     }
 
+    @Override
+    public Integer addFrind(Integer User_ID, Integer Friend_ID) {
+        return userMapper.addFrind(User_ID,Friend_ID);
+    }
+
+    @Override
+    public Integer getIDbyUserName(String User_name) {
+        return userMapper.getIDbyUserName(User_name);
+    }
+
 
 }
