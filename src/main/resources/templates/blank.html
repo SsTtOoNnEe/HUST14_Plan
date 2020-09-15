@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
@@ -23,7 +23,7 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div  class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="index.html">
@@ -231,15 +231,19 @@
       <div class="row">
         <div class="col-12">
           <h1>Blank</h1>
-          <form action="/UserPage/testPage" method="post"><div id="planTable" style="display:none">200</div>
+
+          <form action="/UserPage/testPage" method="post">
+            <input value="200" id="planTable" style="display:none" >
+            <input id="taskIdLeftTime" value="2" name="taskId" style="display:none">
             <input style="display: none" name="leftTime" id="leftTimeValue">
-          <button id="pausebutton" type="submit" class="btn btn-info">暂停计时</button>
+            <button id="pausebutton" type="submit" class="btn btn-info">暂停计时</button>
           </form>
           <div  style="color:red"><textarea id="timer"  rows="1"></textarea>
+
           <script type="text/javascript">
             var planBox = document.getElementById('planTable');
             var oBox= document.getElementById('timer');
-            var alltime = planBox.innerText;
+            var alltime = planBox.value;
             var leftInput = document.getElementById("leftTimeValue");
             var maxtime = alltime * 60;
             function CountDown() {
@@ -254,7 +258,7 @@
                 clearInterval(timer);
                 alert("时间到，结束!");
               }
-              planBox.innerText="" + minutes;
+              planBox.value="" + minutes;
               leftInput.setAttribute("value",minutes);
             }
             timer = setInterval("CountDown()", 1000);
@@ -264,7 +268,8 @@
 
             </script>
 
-
+          </div>
+        </div>
         </div>
       </div>
     </div>

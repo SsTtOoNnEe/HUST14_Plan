@@ -51,7 +51,7 @@
 
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
-                        <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">添加好友</a>
+                        <a class="nav-link" th:href="@{'/UserPage/addfriends/'+${user.User_name}}">添加好友</a>
                     </li>
                     <li>
                         <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">好友排行</a>
@@ -60,9 +60,9 @@
 
 
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-wrench"></i>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <a class="nav-link" th:href="@{'/UserPage/settings/'+${user.User_name}}">
+                    <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">设置</span>
                 </a>
             </li>

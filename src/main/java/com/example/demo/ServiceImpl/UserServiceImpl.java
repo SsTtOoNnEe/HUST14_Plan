@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getAllUser() {
+        return userMapper.getAllUser();
+    }
+
+    @Override
     public Integer register(User user) {
         return userMapper.register(user);
     }
@@ -47,8 +52,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer updateLeftTime(String leftTime) {
-        return userMapper.updateLeftTime(leftTime);
+    public Integer updateLeftTime(String taskId,String leftTime) {
+        return userMapper.updateLeftTime(taskId,leftTime);
     }
 
 

@@ -16,6 +16,9 @@ public interface UserMapper {
     @Select("SELECT * FROM hust_plan.user_info where User_name=#{User_name}")
     User getPwdByUserName(@Param("User_name") String User_name,@Param("User_pwd") String User_pwd);
 
+    @Select("SELECT * FROM hust_plan.user_info")
+    List<User> getAllUser();
+
     @Insert("INSERT INTO user_info (User_name,User_pwd,User_sex,User_email,User_tagSchool,User_slogan,Tasks_ID) values(#{User_name},#{User_pwd},#{User_sex},#{User_email},#{User_tagSchool},#{User_slogan},'1,')")
     Integer register(User user);
 
@@ -34,7 +37,9 @@ public interface UserMapper {
     @Update("update user_info set Tasks_ID=#{Tasks_ID} where User_name=#{User_name}")
     Integer updateUserTasksID(@Param("Tasks_ID") String Tasks_ID,@Param("User_name") String User_name);
 
-    @Update("update task_info set Task_leftTime=#{leftTime}")
-    Integer updateLeftTime(String leftTime);
+
+    @Update("update task_info set Task_leftTime=#{leftTime} where Task_ID=#{taskId}")
+    Integer updateLeftTime(@Param("taskId") String taskId,@Param("leftTime") String leftTime);
+
 
 }
