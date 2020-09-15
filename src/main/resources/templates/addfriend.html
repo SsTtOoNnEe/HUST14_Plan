@@ -124,7 +124,7 @@
                       <td th:text="${User.User_sex}==1?'男':'女'">男</td>
                     <td th:text=" ${#dates.format(User.User_bir,'yyyy/MM/dd')}">1998/3/26</td>
                     <td th:text="${User.User_email}">stone@qq.com</td>
-                    <td><a href="#">查看</a>/<a href="#">添加</a></td>
+                    <td><a href="#">查看</a>/<a th:href="@{'/UserPage/testPage/'+${user.User_name}+'/'+${User.User_name}}">添加</a></td>
                   </tr>
                   </table>
   

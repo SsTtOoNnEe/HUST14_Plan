@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.PathVariableMethodArgumentResolver;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,9 +101,12 @@ public class UserController {
     }
 
 
-    @GetMapping("/testPage")
-    public String testPage() {
-        return "blank";
+    @GetMapping("/testPage/{User_name}/{Friend_name}")
+    public String testPage(@PathVariable("User_name")String User_name,@PathVariable("Friend_name")String Friend_name) {
+        Integer User_ID = userService.getIDbyUserName(User_name);
+        Integer Friend_ID = userService.getIDbyUserName(Friend_name);
+        userService.addFrind(User_ID,Friend_ID);
+        return "redirect:/UserPage/addfriends/"+User_name;
     }
 
 
