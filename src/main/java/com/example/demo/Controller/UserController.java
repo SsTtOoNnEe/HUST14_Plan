@@ -100,8 +100,14 @@ public class UserController {
         return "settings";
     }
 
+    @PostMapping("/settings")
+    public String updateUserByName(User user){
+        userService.updateUserByName(user);
+        return "redirect:/UserPage/register";
+    }
 
-    @GetMapping("/testPage/{User_name}/{Friend_name}")
+
+    @GetMapping("/addfriends/{User_name}/{Friend_name}")
     public String testPage(@PathVariable("User_name")String User_name,@PathVariable("Friend_name")String Friend_name) {
         Integer User_ID = userService.getIDbyUserName(User_name);
         Integer Friend_ID = userService.getIDbyUserName(Friend_name);
