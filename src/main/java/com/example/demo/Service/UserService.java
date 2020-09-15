@@ -12,7 +12,12 @@ public interface UserService {
 
     Integer register(User user);
 
+
+    List<String> getAllName();
+
+
     List<User> rankMyFriend();
+
 
     Integer updateUserTasksID(String Tasks_ID,String User_name);
 

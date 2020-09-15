@@ -30,6 +30,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+
+    public List<String> getAllName() {
+        return userMapper.getAllName();
+    }
+
+
     public List<User> rankMyFriend() {
         List<User> list = userMapper.rankMyFriend();
         return list;
