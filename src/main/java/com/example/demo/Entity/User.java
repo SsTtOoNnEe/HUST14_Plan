@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -70,8 +71,13 @@ public class User {
         User_sex = user_sex;
     }
 
-    public Date getUser_bir() {
-        return User_bir;
+    public String getUser_bir() {
+        if(User_bir == null) {
+            return "2099-12-12";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String birthday = sdf.format(User_bir);
+        return birthday;
     }
 
     public void setUser_bir(Date user_bir) {

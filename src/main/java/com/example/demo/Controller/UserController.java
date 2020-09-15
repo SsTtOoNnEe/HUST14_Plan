@@ -119,7 +119,7 @@ public class UserController {
         return "rankoffriend";
     }
 
-    @PostMapping("add/{User_name}")
+    @PostMapping("addplan/{User_name}")
     public String addNewPlan(@PathVariable("User_name") String User_name, Task task){
 
         Integer i = taskService.addTask(task);
@@ -129,6 +129,13 @@ public class UserController {
         Integer j = userService.updateUserTasksID(tasks_id,User_name);
 
         return "redirect:/UserPage/allplan/"+User_name;
+    }
+
+    @GetMapping("/friendlist")
+    public String friendList(Model model) {
+        List<User> users = userService.getAllUser();
+        model.addAttribute("users",users);
+        return "addfriend";
     }
 
     @GetMapping("/startplan")
@@ -151,6 +158,13 @@ public class UserController {
     public String postPauseTime(String leftTime){
         userService.updateLeftTime(leftTime);
         return "redirect:/UserPage/pause";
+    }
+
+    @GetMapping("/addfriends/{User_name}")
+    public String addFriends(@PathVariable("User_name") String User_name,Model model){
+        User user = userService.findUserByName(User_name);
+        model.addAttribute("user",user);
+        return "addfriend";
     }
 
 }
