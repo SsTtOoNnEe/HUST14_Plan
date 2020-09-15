@@ -27,4 +27,10 @@ public interface UserService {
     Integer updateUserTasksID(String Tasks_ID,String User_name);
 
     Integer updateLeftTime(Integer taskId,String leftTime);
+
+
+    Integer addFrind(Integer User_ID,Integer Friend_ID);
+
+    Integer getIDbyUserName(String User_name);
+
 }

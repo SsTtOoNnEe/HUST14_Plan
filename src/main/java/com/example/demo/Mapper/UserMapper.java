@@ -44,5 +44,10 @@ public interface UserMapper {
 
 
 
+    @Insert("INSERT INTO friend_info (User_ID,Friend_ID) VALUES (${User_ID},${Friend_ID})")
+    Integer addFrind(@Param("User_ID") Integer User_ID,@Param("Friend_ID") Integer Friend_ID);
+
+    @Select("SELECT User_ID FROM user_info WHERE User_name = #{User_name}")
+    Integer getIDbyUserName(String User_name);
 
 }
