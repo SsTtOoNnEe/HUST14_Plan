@@ -37,8 +37,11 @@ public interface UserMapper {
     @Update("update user_info set Tasks_ID=#{Tasks_ID} where User_name=#{User_name}")
     Integer updateUserTasksID(@Param("Tasks_ID") String Tasks_ID,@Param("User_name") String User_name);
 
+
+
     @Update("update task_info set Task_leftTime=#{leftTime}")
     Integer updateLeftTime(String leftTime);
+
 
 
 }
