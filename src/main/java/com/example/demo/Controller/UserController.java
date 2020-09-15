@@ -105,10 +105,16 @@ public class UserController {
         return "settings";
     }
 
+    @PostMapping("/settings")
+    public String updateUserByName(User user){
+        userService.updateUserByName(user);
+        return "redirect:/UserPage/register";
+    }
+
 
     @GetMapping("/testPage")
     public String testPage() {
-        return "allplan";
+        return "settings";
     }
 
 
