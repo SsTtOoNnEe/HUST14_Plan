@@ -10,6 +10,8 @@ public interface UserService {
 
     Integer register(User user);
 
+    List<String> getAllName();
+
 
 
 

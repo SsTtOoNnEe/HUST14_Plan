@@ -32,7 +32,14 @@ public class UserController {
 
     @PostMapping("/register")
     public String getRegister(User user){
+        List<String> user_names=userService.getAllName();
         userService.register(user);
+        for(String name:user_names){
+            if(name.equals(user.getUser_name())){
+                System.out.println("用户名重复");
+                //return "redirect"
+            }
+        }
         return "redirect:/UserPage/register";
     }
     @GetMapping("/allplan")

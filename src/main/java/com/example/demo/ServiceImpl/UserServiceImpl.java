@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService {
         return userMapper.register(user);
     }
 
+    @Override
+    public List<String> getAllName() {
+        return userMapper.getAllName();
+    }
+
 }
