@@ -16,19 +16,15 @@ public interface UserMapper {
     @Select("SELECT * FROM hust_plan.user_info where User_name=#{User_name}")
     User getPwdByUserName(@Param("User_name") String User_name,@Param("User_pwd") String User_pwd);
 
+
+    @Insert("INSERT INTO user_info (User_name,User_pwd,User_sex,User_bir,User_phone,User_email,User_tagSchool,User_slogan,Tasks_ID) values(#{User_name},#{User_pwd},#{User_sex},#{User_bir},#{User_phone},#{User_email},#{User_tagSchool},#{User_slogan},'1,')")
+    Integer register(User user);
+  
     @Select("SELECT * FROM hust_plan.user_info")
     List<User> getAllUser();
 
-    @Insert("INSERT INTO user_info (User_name,User_pwd,User_sex,User_email,User_tagSchool,User_slogan,Tasks_ID) values(#{User_name},#{User_pwd},#{User_sex},#{User_email},#{User_tagSchool},#{User_slogan},'1,')")
-    Integer register(User user);
-
-
     @Select("select User_name from user_info")
     List<String> getAllName();
-
-    /*@Select("select User_name,time from user_info"){
-        Map<String,Integer> getAll();
-    }*/
 
 
     @Select("select * from hust_plan.testforrank order by User_learningTime DESC")
@@ -38,8 +34,16 @@ public interface UserMapper {
     Integer updateUserTasksID(@Param("Tasks_ID") String Tasks_ID,@Param("User_name") String User_name);
 
 
+
     @Update("update task_info set Task_leftTime=#{leftTime} where Task_ID=#{taskId}")
     Integer updateLeftTime(@Param("taskId") String taskId,@Param("leftTime") String leftTime);
+
+    @Update("update user_info set User_pwd=#{User_pwd},User_sex=#{User_sex},User_bir=#{User_bir},User_phone=#{User_phone},User_email=#{User_email},User_tagSchool=#{User_tagSchool},User_slogan=#{User_slogan} where User_name=#{User_name};")
+    Integer updateUserByName(User user);
+
+    @Update("update task_info set Task_leftTime=#{leftTime}")
+    Integer updateLeftTime(String leftTime);
+
 
 
 }

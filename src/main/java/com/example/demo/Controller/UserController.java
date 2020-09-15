@@ -40,7 +40,7 @@ public class UserController {
                 //return "redirect"
             }
         }
-        return "redirect:/UserPage/register";
+        return "redirect:/UserPage/login";
 
     }
 
@@ -91,12 +91,6 @@ public class UserController {
         return "testchart";
     }
 
-    @GetMapping("/friends/{User_name}")
-    public String getUserFriends(@PathVariable("User_name") String User_name, Model model) {
-        User user = userService.findUserByName(User_name);
-        model.addAttribute("user", user);
-        return "friends";
-    }
 
     @GetMapping("/settings/{User_name}")
     public String getUserSettings(@PathVariable("User_name") String User_name, Model model) {
@@ -105,10 +99,16 @@ public class UserController {
         return "settings";
     }
 
+    @PostMapping("/settings")
+    public String updateUserByName(User user){
+        userService.updateUserByName(user);
+        return "redirect:/UserPage/register";
+    }
+
 
     @GetMapping("/testPage")
     public String testPage() {
-        return "blank";
+        return "settings";
     }
 
 
@@ -131,10 +131,13 @@ public class UserController {
         return "redirect:/UserPage/allplan/"+User_name;
     }
 
-    @GetMapping("/friendlist")
-    public String friendList(Model model) {
+    @GetMapping("addfriends/{User_name}")
+    public String friendList(@PathVariable("User_name")String User_name, Model model) {
+        User user = userService.findUserByName(User_name);
         List<User> users = userService.getAllUser();
+
         model.addAttribute("users",users);
+        model.addAttribute("user",user);
         return "addfriend";
     }
 
@@ -161,6 +164,7 @@ public class UserController {
         userService.updateLeftTime(taskId,leftTime);
         return "redirect:/UserPage/pause/"+taskId;
     }
+
 
 
     @GetMapping("/addfriends/{User_name}")

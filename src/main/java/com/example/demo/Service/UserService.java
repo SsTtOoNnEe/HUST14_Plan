@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import com.example.demo.Entity.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ public interface UserService {
 
 
     List<User> rankMyFriend();
+
+    Integer updateUserByName(User user);
 
 
     Integer updateUserTasksID(String Tasks_ID,String User_name);
