@@ -31,26 +31,37 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="allplan.html">
+          <a class="nav-link" th:href="@{'/UserPage/allplan/'+${user.User_name}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">所有任务</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="testchart.html">
+          <a class="nav-link" th:href="@{'/UserPage/analysis/'+${user.User_name}}">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">任务分析</span>
           </a>
         </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">好友列表</span>
           </a>
+
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a class="nav-link" th:href="@{'/UserPage/addfriends/'+${user.User_name}}">添加好友</a>
+            </li>
+            <li>
+              <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">好友排行</a>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" th:href="@{'/UserPage/settings/'+${user.User_name}}">
+            <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">设置</span>
           </a>
         </li>
@@ -89,14 +100,14 @@
             <div class="form-group">
               <label for="inputName3" class="col-md-2 control-label">用户名</label>
             <div class="col-md-12">
-              <input type="text" th:value="${stu.User_name}" name="User_name" class="form-control" id="inputName3" placeholder="用户名">
+              <input type="text"  name="User_name" class="form-control" id="inputName3" placeholder="用户名">
             </div>
             </div>
 
             <div class="form-group">
               <label for="inputPassword3" class="col-md-2 control-label">密码</label>
               <div class="col-md-12">
-                <input type="password" th:value="${stu.User_pwd}" name="User_pwd" class="form-control" id="inputPassword3" placeholder="密码">
+                <input type="password"  name="User_pwd" class="form-control" id="inputPassword3" placeholder="密码">
               </div>
             </div>
 
@@ -104,10 +115,10 @@
               <label for="inputPassword3" class="col-md-2 control-label">性别</label>
               <div class="col-md-12">
                 <label class="radio-inline">
-                  <input type="radio" th:checked="${stu.User_sex}==true?1:0" name="User_sex" id="inlineRadio1" value="1"> 男
+                  <input type="radio" name="User_sex" id="inlineRadio1" value="1"> 男
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" th:checked="${stu.User_sex}==false?1:0" name="User_sex" id="inlineRadio2" value="0"> 女
+                  <input type="radio"  name="User_sex" id="inlineRadio2" value="0"> 女
                 </label>
               </div>
             </div>
@@ -115,28 +126,28 @@
             <div class="form-group">
               <label for="inputPassword3" class="col-md-2 control-label">出生日期</label>
               <div class="col-md-12">
-                <input type="date" th:value="${stu.User_bir}" name="User_bir" class="form-control" id="inputPassword3">
+                <input type="date"  name="User_bir" class="form-control" id="inputPassword3">
               </div>
             </div>
 
             <div class="form-group">
               <label for="inputTel3" class="col-md-2 control-label">电话</label>
               <div class="col-md-12">
-                <input type="tel" th:value="${stu.User_phone}" name="User_phone" class="form-control" id="inputTel3" placeholder="13625634088">
+                <input type="tel"  name="User_phone" class="form-control" id="inputTel3" placeholder="13625634088">
               </div>
             </div>
 
             <div class="form-group">
               <label for="inputEmail3" class="col-md-2 control-label">Email</label>
               <div class="col-md-12">
-                <input type="email" th:value="${stu.User_email}" name="User_email" class="form-control" id="inputEmail3" placeholder="Email">
+                <input type="email"  name="User_email" class="form-control" id="inputEmail3" placeholder="Email">
               </div>
             </div>
 
             <div class="form-group">
               <label for="inputName3" class="col-md-2 control-label">目标院校/专业</label>
             <div class="col-md-12">
-              <input type="text" th:value="${stu.User_tagSchool}" name="User_tagSchool" class="form-control" id="inputName3" placeholder="华中科技大学软件学院">
+              <input type="text" name="User_tagSchool" class="form-control" id="inputName3" placeholder="华中科技大学软件学院">
             </div>
             </div>
 

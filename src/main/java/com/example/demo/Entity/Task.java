@@ -7,6 +7,16 @@ public class Task {
     private Integer Task_type;
     private Integer Task_severity;
 
+    public Integer getTask_leftTime() {
+        return Task_leftTime;
+    }
+
+    public void setTask_leftTime(Integer task_leftTime) {
+        Task_leftTime = task_leftTime;
+    }
+
+    private Integer Task_leftTime;
+
     public String getTask_name() {
         return Task_name;
     }

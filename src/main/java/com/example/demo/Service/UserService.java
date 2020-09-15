@@ -23,5 +23,5 @@ public interface UserService {
 
     Integer updateUserTasksID(String Tasks_ID,String User_name);
 
-
+    Integer updateLeftTime(String leftTime);
 }

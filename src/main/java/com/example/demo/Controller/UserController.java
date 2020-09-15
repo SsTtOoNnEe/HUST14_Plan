@@ -107,20 +107,19 @@ public class UserController {
 
 
     @GetMapping("/testPage")
-    public String testPage(Model model) {
-        return null;
+    public String testPage() {
+        return "blank";
     }
 
 
     @GetMapping("/rank")
     public String rankPage(Model model) {
-
         List<User> rankList = userService.rankMyFriend();
         model.addAttribute("rankList", rankList);
         return "rankoffriend";
     }
 
-    @PostMapping("add/{User_name}")
+    @PostMapping("addplan/{User_name}")
     public String addNewPlan(@PathVariable("User_name") String User_name, Task task){
 
         Integer i = taskService.addTask(task);
@@ -149,8 +148,23 @@ public class UserController {
         return "editplan";
     }
 
-    @GetMapping("/pauseplan")
+    @GetMapping("/pause")
     public String getPausePlan(){
         return "pauseplan";
     }
+
+
+    @PostMapping("/testPage")
+    public String postPauseTime(String leftTime){
+        userService.updateLeftTime(leftTime);
+        return "redirect:/UserPage/pause";
+    }
+
+    @GetMapping("/addfriends/{User_name}")
+    public String addFriends(@PathVariable("User_name") String User_name,Model model){
+        User user = userService.findUserByName(User_name);
+        model.addAttribute("user",user);
+        return "addfriend";
+    }
+
 }
