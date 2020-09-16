@@ -1,6 +1,7 @@
 package com.example.demo.ServiceImpl;
 
 import com.example.demo.Entity.Manager;
+import com.example.demo.Entity.User;
 import com.example.demo.Mapper.ManagerMapper;
 import com.example.demo.Service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,11 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
+    public Manager getPwdByManagerName(String Manager_name, String Manager_pwd) {
+        return managerMapper.getPwdByManagerName(Manager_name,Manager_pwd);
+
     public Integer ad_register(Manager manager) {
         return managerMapper.ad_register(manager);
+
     }
 }

@@ -72,6 +72,7 @@ public class User {
         return sdf.format(User_bir);
     }
 
+
     public boolean isUser_sex() {
         return User_sex;
     }
