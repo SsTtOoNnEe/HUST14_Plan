@@ -155,17 +155,23 @@ public class UserController {
         return "editplan";
     }
 
-    @GetMapping("/pause")
-    public String getPausePlan(){
+    @GetMapping("/pause/{taskId}")
+    public String getPausePlan(Model model,@PathVariable("taskId") String taskId){
+
         return "pauseplan";
     }
 
 
+
     @PostMapping("/testPage")
-    public String postPauseTime(String leftTime){
-        userService.updateLeftTime(leftTime);
-        return "redirect:/UserPage/pause";
+    public String postPauseTime(String taskId,String leftTime){
+        Integer id = Integer.parseInt(taskId);
+        userService.updateLeftTime(id,leftTime);
+        return "redirect:/UserPage/pause/"+taskId;
     }
+
+
+
 
 
 }
