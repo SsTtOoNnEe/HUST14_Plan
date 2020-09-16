@@ -54,7 +54,7 @@
                       <a class="nav-link" th:href="@{'/UserPage/addfriends/'+${user.User_name}}">添加好友</a>
                   </li>
                   <li>
-                      <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">好友排行</a>
+                      <a class="nav-link" th:href="@{'/UserPage/rank/'+${user.User_name}}">好友排行</a>
                   </li>
               </ul>
           </li>
@@ -121,10 +121,10 @@
                   <tr th:each="User:${users}">
                     <td th:text="${User.User_name}">石剑寒</td>
                     <td><img src="/img/kobe.png" width="30px" ></td>
-                      <td th:text="${User.User_sex}==1?'男':'女'">男</td>
+                      <td th:text="${User.User_sex}==true?'男':'女'">男</td>
                     <td th:text=" ${#dates.format(User.User_bir,'yyyy/MM/dd')}">1998/3/26</td>
                     <td th:text="${User.User_email}">stone@qq.com</td>
-                    <td><a href="#">查看</a>/<a th:href="@{'/UserPage/testPage/'+${user.User_name}+'/'+${User.User_name}}">添加</a></td>
+                    <td><a href="#">查看</a>/<a th:href="@{'/UserPage/addfriends/'+${user.User_name}+'/'+${User.User_name}}">添加</a></td>
                   </tr>
                   </table>
   
