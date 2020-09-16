@@ -9,6 +9,15 @@ public class Manager {
     private Date Manager_bir;
     private String Manager_email;
     private String Manager_key;
+    private String Manager_phone;
+
+    public String getManager_phone() {
+        return Manager_phone;
+    }
+
+    public void setManager_phone(String manager_phone) {
+        Manager_phone = manager_phone;
+    }
 
     public String getManager_name() {
         return Manager_name;

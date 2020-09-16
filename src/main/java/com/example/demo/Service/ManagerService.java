@@ -10,4 +10,7 @@ public interface ManagerService {
     List<Manager> findAllManagers();
 
     Manager getPwdByManagerName(String Manager_name,String Manager_pwd);
+
+    Integer ad_register(Manager manager);
+
 }

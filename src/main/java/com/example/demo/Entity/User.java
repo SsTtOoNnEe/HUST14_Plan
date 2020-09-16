@@ -6,15 +6,6 @@ import java.util.Date;
 public class User {
     private String User_name;
     private String User_pwd;
-
-    public boolean isUser_sex() {
-        return User_sex;
-    }
-
-    public void setUser_sex(boolean user_sex) {
-        User_sex = user_sex;
-    }
-
     private boolean User_sex;
     private Date User_bir;
     private String User_email;
@@ -82,6 +73,13 @@ public class User {
     }
 
 
+    public boolean isUser_sex() {
+        return User_sex;
+    }
+
+    public void setUser_sex(boolean user_sex) {
+        User_sex = user_sex;
+    }
 
     public void setUser_bir(Date user_bir) {
         User_bir = user_bir;

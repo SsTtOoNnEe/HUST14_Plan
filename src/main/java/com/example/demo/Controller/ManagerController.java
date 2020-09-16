@@ -30,6 +30,7 @@ public class ManagerController {
         return "blank";
     }
 
+
     @GetMapping("/loginM")
     public String loginByManagerNameAndPwd() {
         return "admin_login";
@@ -48,6 +49,17 @@ public class ManagerController {
             System.out.println("用户名或密码错误！");
             return "loginerrorM";
         }
+
+    @GetMapping("/ad_register")
+    public String getManagerRegister(){
+        return "administrator_register";
+    }
+
+    @PostMapping("/ad_register")
+    public String getManagerRegister(Manager manager){
+        managerService.ad_register(manager);
+        return "redirect:/ManagerPage/ad_register";
+
     }
 
 }
