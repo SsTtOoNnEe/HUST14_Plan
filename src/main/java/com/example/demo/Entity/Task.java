@@ -1,6 +1,15 @@
 package com.example.demo.Entity;
 
 public class Task {
+    private Integer Task_ID;
+
+    public Integer getTask_ID() {
+        return Task_ID;
+    }
+
+    public void setTask_ID(Integer task_ID) {
+        Task_ID = task_ID;
+    }
 
     private String Task_name;
     private String Task_time;

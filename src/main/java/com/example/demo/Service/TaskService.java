@@ -11,4 +11,5 @@ public interface TaskService {
 
     Integer addTask(Task task);
 
+    Integer findUserIdByTaskId(String Task_ID);
 }

@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.Entity.Task;
 import com.example.demo.Entity.User;
 
 import java.util.List;
@@ -31,5 +32,7 @@ public interface UserService {
     Integer addFrind(Integer User_ID,Integer Friend_ID);
 
     Integer getIDbyUserName(String User_name);
+
+    User getUserByUserID(int User_ID);
 
 }

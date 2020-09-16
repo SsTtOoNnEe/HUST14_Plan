@@ -48,4 +48,8 @@ public interface UserMapper {
     @Select("SELECT User_ID FROM user_info WHERE User_name = #{User_name}")
     Integer getIDbyUserName(String User_name);
 
+    @Select("select* from user_info where User_ID = #{User_ID}")
+    User getUserByUserID(int User_ID);
+
+
 }

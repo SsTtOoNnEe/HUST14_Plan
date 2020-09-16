@@ -30,4 +30,9 @@ public class TaskServiceImpl implements TaskService {
         return taskMapper.addTask(task);
     }
 
+    @Override
+    public Integer findUserIdByTaskId(String Task_ID) {
+        return taskMapper.findUserIdByTaskId(Task_ID);
+    }
+
 }
