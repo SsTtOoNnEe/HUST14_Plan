@@ -31,13 +31,13 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" th:href="@{'/UserPage/addfriends/'+${user.User_name}}">
+<!--          <a class="nav-link" th:href="@{'/UserPage/addfriends/'+${user.User_name}}">-->
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">所有任务</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">
+<!--          <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">-->
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">任务分析</span>
           </a>
@@ -51,16 +51,16 @@
 
               <ul class="sidenav-second-level collapse" id="collapseComponents">
                   <li>
-                      <a class="nav-link" th:href="@{'/UserPage/addfriends/'+${user.User_name}}">添加好友</a>
+<!--                      <a class="nav-link" th:href="@{'/UserPage/addfriends/'+${user.User_name}}">添加好友</a>-->
                   </li>
                   <li>
-                      <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">好友排行</a>
+<!--                      <a class="nav-link" th:href="@{'/UserPage/friends/'+${user.User_name}}">好友排行</a>-->
                   </li>
               </ul>
           </li>
 
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-              <a class="nav-link" th:href="@{'/UserPage/settings/'+${user.User_name}}">
+<!--              <a class="nav-link" th:href="@{'/UserPage/settings/'+${user.User_name}}">-->
                   <i class="fa fa-fw fa-area-chart"></i>
                   <span class="nav-link-text">设置</span>
               </a>
@@ -124,7 +124,7 @@
                       <td th:text="${User.User_sex}==true?'男':'女'">男</td>
                     <td th:text=" ${#dates.format(User.User_bir,'yyyy/MM/dd')}">1998/3/26</td>
                     <td th:text="${User.User_email}">stone@qq.com</td>
-                    <td><a href="#">查看</a>/<a th:href="@{'/UserPage/testPage/'+${user.User_name}+'/'+${User.User_name}}">添加</a></td>
+                    <td><a href="#">查看</a>/<a href="#">添加</a></td>
                   </tr>
                   </table>
   

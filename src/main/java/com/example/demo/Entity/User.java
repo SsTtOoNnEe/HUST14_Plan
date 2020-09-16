@@ -80,7 +80,7 @@ public class User {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(User_bir);
     }
-  
+
 
 
     public void setUser_bir(Date user_bir) {

@@ -1,11 +1,11 @@
 package com.example.demo.Mapper;
 
-import com.example.demo.Entity.Task;
+
 import com.example.demo.Entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
-import java.util.Map;
+
 
 @Mapper
 public interface UserMapper {
@@ -19,7 +19,7 @@ public interface UserMapper {
 
     @Insert("INSERT INTO user_info (User_name,User_pwd,User_sex,User_bir,User_phone,User_email,User_tagSchool,User_slogan,Tasks_ID) values(#{User_name},#{User_pwd},#{User_sex},#{User_bir},#{User_phone},#{User_email},#{User_tagSchool},#{User_slogan},'1,')")
     Integer register(User user);
-  
+
     @Select("SELECT * FROM hust_plan.user_info")
     List<User> getAllUser();
 

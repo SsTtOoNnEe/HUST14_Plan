@@ -5,14 +5,11 @@ import com.example.demo.Entity.Task;
 import com.example.demo.Entity.User;
 import com.example.demo.Service.TaskService;
 import com.example.demo.Service.UserService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.PathVariableMethodArgumentResolver;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,7 +66,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String loginByUserNameAndPwd() {
-        return "login";
+        return "user_login";
     }
 
     @PostMapping("/selectPwd")
@@ -81,7 +78,7 @@ public class UserController {
                     UserName;
         } else {
             System.out.println("用户名或密码错误！");
-            return "login";
+            return "loginerror";
         }
     }
 
