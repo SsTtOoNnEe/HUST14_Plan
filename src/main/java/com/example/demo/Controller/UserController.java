@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.PathVariableMethodArgumentResolver;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +69,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String loginByUserNameAndPwd() {
-        return "login";
+        return "user_login";
     }
 
     @PostMapping("/selectPwd")
@@ -80,7 +81,7 @@ public class UserController {
                     UserName;
         } else {
             System.out.println("用户名或密码错误！");
-            return "login";
+            return "user_login";
         }
     }
 
@@ -109,9 +110,12 @@ public class UserController {
     }
 
 
-    @GetMapping("/testPage")
-    public String testPage() {
-        return "settings";
+    @GetMapping("/addfriends/{User_name}/{Friend_name}")
+    public String testPage(@PathVariable("User_name")String User_name,@PathVariable("Friend_name")String Friend_name) {
+        Integer User_ID = userService.getIDbyUserName(User_name);
+        Integer Friend_ID = userService.getIDbyUserName(Friend_name);
+        userService.addFrind(User_ID,Friend_ID);
+        return "redirect:/UserPage/addfriends/"+User_name;
     }
 
 
@@ -156,17 +160,23 @@ public class UserController {
         return "editplan";
     }
 
-    @GetMapping("/pause")
-    public String getPausePlan(){
+    @GetMapping("/pause/{taskId}")
+    public String getPausePlan(Model model,@PathVariable("taskId") String taskId){
+
         return "pauseplan";
     }
 
 
+
     @PostMapping("/testPage")
-    public String postPauseTime(String leftTime){
-        userService.updateLeftTime(leftTime);
-        return "redirect:/UserPage/pause";
+    public String postPauseTime(String taskId,String leftTime){
+        Integer id = Integer.parseInt(taskId);
+        userService.updateLeftTime(id,leftTime);
+        return "redirect:/UserPage/pause/"+taskId;
     }
+
+
+
 
 
 }

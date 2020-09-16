@@ -57,8 +57,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer updateLeftTime(String leftTime) {
-        return userMapper.updateLeftTime(leftTime);
+    public Integer updateLeftTime(Integer taskId,String leftTime) {
+        return userMapper.updateLeftTime(taskId,leftTime);
+    }
+
+    @Override
+    public Integer addFrind(Integer User_ID, Integer Friend_ID) {
+        return userMapper.addFrind(User_ID,Friend_ID);
+    }
+
+    @Override
+    public Integer getIDbyUserName(String User_name) {
+        return userMapper.getIDbyUserName(User_name);
     }
 
 
