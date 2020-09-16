@@ -20,4 +20,7 @@ public interface TaskMapper {
     @Insert("insert into task_info(Task_name,Task_type,Task_time,Task_severity) values(#{Task_name},#{Task_type},#{Task_time},#{Task_severity})")
     Integer addTask(Task task);
 
+    @Select("select User_ID from task_info where Task_ID=#{Task_ID}")
+    Integer findUserIdByTaskId(String Task_ID);
+
 }

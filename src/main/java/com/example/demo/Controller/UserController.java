@@ -157,18 +157,56 @@ public class UserController {
 
     @GetMapping("/pause/{taskId}")
     public String getPausePlan(Model model,@PathVariable("taskId") String taskId){
-
+        Integer id = Integer.parseInt(taskId);
+        Task task = taskService.findTaskByID(id);
+        model.addAttribute("task",task);
+        Integer userId = taskService.findUserIdByTaskId(taskId);
+        User user = userService.getUserByUserID(userId);
+        model.addAttribute("user",user);
         return "pauseplan";
     }
 
 
 
     @PostMapping("/testPage")
-    public String postPauseTime(String taskId,String leftTime){
+    public String postPauseTime(String taskId,String leftTime,Model model){
         Integer id = Integer.parseInt(taskId);
         userService.updateLeftTime(id,leftTime);
+        Integer userId = taskService.findUserIdByTaskId(taskId);
+        User user = userService.getUserByUserID(userId);
+        model.addAttribute("user",user);
         return "redirect:/UserPage/pause/"+taskId;
     }
+
+    @GetMapping("/testPage/{task_ID}")
+    public String getTestPage(@PathVariable("task_ID") String taskId,Model model){
+        Integer taskid = Integer.parseInt(taskId);
+        Task task = taskService.findTaskByID(taskid);
+        model.addAttribute("task",task);
+        Integer userId = taskService.findUserIdByTaskId(taskId);
+        User user = userService.getUserByUserID(userId);
+        model.addAttribute("user",user);
+        return "blank";
+    }
+
+    @GetMapping("/start/{task_ID}")
+    public String getTestPage(Model model,@PathVariable("task_ID") String taskId){
+        Integer taskid = Integer.parseInt(taskId);
+        Task task = taskService.findTaskByID(taskid);
+
+        model.addAttribute("task",task);
+        return "redirect:/UserPage/testPage/"+ taskId;
+    }
+
+    @GetMapping("/continueFromPause/{task_name}")
+    public String continuePlan(@PathVariable("task_name") String taskName,Model model){
+        Integer id = taskService.findTaskIdByName(taskName);
+        String str =  id.toString();
+        Task task = taskService.findTaskByID(id);
+        model.addAttribute("task",task);
+        return "redirect:/UserPage/testPage/"+str;
+    }
+
 
 
 
