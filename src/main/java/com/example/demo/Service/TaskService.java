@@ -12,4 +12,6 @@ public interface TaskService {
     Integer addTask(Task task);
 
     Integer findUserIdByTaskId(String Task_ID);
+
+    void delTask(String Task_ID);
 }

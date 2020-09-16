@@ -211,6 +211,19 @@ public class UserController {
         return "redirect:/UserPage/testPage/"+str;
     }
 
+    @GetMapping("/delete/{task_ID}")
+    public String deletetask(@PathVariable("task_ID")String taskID,Model model){
+        Integer taskid = Integer.parseInt(taskID);
+        Task task = taskService.findTaskByID(taskid);
+        model.addAttribute("task",task);
+        Integer userId = taskService.findUserIdByTaskId(taskID);
+        User user = userService.getUserByUserID(userId);
+         String User_name=user.getUser_name();
+        model.addAttribute("user",user);
+        taskService.delTask(taskID);
+        return "redirect:/UserPage/allplan/"+User_name;
+    }
+
 
 
 

@@ -4,10 +4,7 @@ import com.example.demo.Entity.Task;
 import com.example.demo.Mapper.TaskMapper;
 import com.example.demo.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.config.TaskNamespaceHandler;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -33,6 +30,11 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Integer findUserIdByTaskId(String Task_ID) {
         return taskMapper.findUserIdByTaskId(Task_ID);
+    }
+
+    @Override
+    public void delTask(String Task_ID) {
+        taskMapper.delTask(Task_ID);
     }
 
 }

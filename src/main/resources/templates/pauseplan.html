@@ -138,6 +138,31 @@
                   </div>
 
 
+                      <div id="myModal39" class="modal" style="margin:0 auto;display: none; position: fixed;z-index: 1;left: 0;top: 0;width: 50%; height: 100%;border-radius: 20px;
+                      overflow: auto; background-color: rgb(252, 249, 249); background-color: rgba(241, 238, 238, 0.4); ">
+                          <div class="modal-content" style="background-color: #4ee9499a;margin: 15% auto; padding: 30px;border-radius: 20px;width: 50%; ">
+
+                              <div style="float:right;"><span class="close" style="color:  	#fd0000;float: right;font-size: 30px;font-weight: bold;">&times;</span></div>
+                              <div class="form-group">
+                                  <br/>
+                                  <br/>
+                                  <div class="text-center"><h2>是否退出该任务?</h2></div>
+
+                                  <br/>
+                                  <br/>
+                              </div>
+                              <div class="row">
+                                  <div class="col-6">
+                                     <a th:href="@{'/UserPage/delete/'+${task.getTask_ID()}}">残忍退出</a>
+                                  </div>
+                                  <div class="col-6">
+                                      <button type="button" class="btn btn-info jixu">继续进行</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+
 
                 </div>
               </div>
