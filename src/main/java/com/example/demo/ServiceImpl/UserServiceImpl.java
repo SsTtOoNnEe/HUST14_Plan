@@ -15,7 +15,61 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public User findUserByID(Integer User_ID) {
-        return userMapper.findUserByID(User_ID);
+    public User findUserByName(String User_name) {
+        return userMapper.findUserByName(User_name);
     }
+
+    @Override
+    public User getPwdByUserName(String User_name, String User_pwd) {
+        return userMapper.getPwdByUserName(User_name,User_pwd);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return userMapper.getAllUser();
+    }
+
+    @Override
+    public Integer register(User user) {
+        return userMapper.register(user);
+    }
+
+    @Override
+
+    public List<String> getAllName() {
+        return userMapper.getAllName();
+    }
+
+
+    public List<User> rankMyFriend() {
+        List<User> list = userMapper.rankMyFriend();
+        return list;
+    }
+
+    @Override
+    public Integer updateUserByName(User user) {
+        return userMapper.updateUserByName(user);
+    }
+
+    @Override
+    public Integer updateUserTasksID(String Tasks_ID, String User_name) {
+        return userMapper.updateUserTasksID(Tasks_ID,User_name);
+    }
+
+    @Override
+    public Integer updateLeftTime(Integer taskId,String leftTime) {
+        return userMapper.updateLeftTime(taskId,leftTime);
+    }
+
+    @Override
+    public Integer addFrind(Integer User_ID, Integer Friend_ID) {
+        return userMapper.addFrind(User_ID,Friend_ID);
+    }
+
+    @Override
+    public Integer getIDbyUserName(String User_name) {
+        return userMapper.getIDbyUserName(User_name);
+    }
+
+
 }
