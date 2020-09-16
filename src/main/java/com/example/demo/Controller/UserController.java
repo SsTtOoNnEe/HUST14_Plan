@@ -102,7 +102,10 @@ public class UserController {
     @PostMapping("/settings")
     public String updateUserByName(User user){
         userService.updateUserByName(user);
-        return "redirect:/UserPage/register";
+        String User_name = user.getUser_name();
+
+        return "redirect:/UserPage/allplan/" +
+                User_name;
     }
 
 
@@ -112,9 +115,11 @@ public class UserController {
     }
 
 
-    @GetMapping("/rank")
-    public String rankPage(Model model) {
+    @GetMapping("/rank/{User_name}")
+    public String rankPage(@PathVariable("User_name") String User_name, Model model) {
+        User user = userService.findUserByName(User_name);
         List<User> rankList = userService.rankMyFriend();
+        model.addAttribute("user",user);
         model.addAttribute("rankList", rankList);
         return "rankoffriend";
     }
