@@ -21,7 +21,7 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">管理员注册</div>
       <div class="card-body">
-        <form action="/UserPage/register" method="post">
+        <form action="/ManagerPage/ad_register" method="post">
           <div class="form-group">
             <div style="text-align:center;">
               <img id="imgshow" src="wqrqew.jpg" class="img-thumbnail" style="float:center"/>
@@ -29,11 +29,11 @@
           </div>
             <div class="form-group"> 
                 <label for="exampleInputName">用户名</label>
-                <input class="form-control" name="User_name" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="输入用户名">
+                <input class="form-control" name="Manager_name" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="输入用户名">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">密码</label>
-                <input class="form-control" name="User_pwd" id="exampleInputPassword1" type="password" aria-describedby="passwordHelp" placeholder="输入密码">
+                <input class="form-control" name="Manager_pwd" id="exampleInputPassword1" type="password" aria-describedby="passwordHelp" placeholder="输入密码">
             </div>
 <!--            <div class="form-group">-->
 <!--                <label for="exampleInputName">姓名</label>-->
@@ -43,23 +43,30 @@
                 <label for="exampleInputName">性别</label>
                 <div class="col-sm-8">
                   <label class="radio-inline">
-                    <input type="radio" name="User_sex" id="inlineRadio1" value="1"> 男
+                    <input type="radio" name="Manager_sex" id="inlineRadio1" value="1"> 男
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="User_sex" id="inlineRadio2" value="0"> 女
+                    <input type="radio" name="Manager_sex" id="inlineRadio2" value="0"> 女
                   </label>
               </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">生日</label>
+                <input class="form-control" name="Manager_bir" id="exampleInputPassword1" type="date" aria-describedby="passwordHelp">
+              </div>
+
               <div class="form-group">
                 <label for="exampleInputName">电话号码</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp">
+                <input class="form-control" name="Manager_phone" id="exampleInputName" type="text" aria-describedby="nameHelp">
               </div>
+
               <div class="form-group">
                 <label for="exampleInputEmail1">电子邮箱</label>
-                <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp">
+                <input class="form-control" name="Manager_email" id="exampleInputEmail1" type="email" aria-describedby="emailHelp">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">密钥</label>
-                <input class="form-control" id="exampleInputPassword1" type="password" aria-describedby="passwordHelp" placeholder="输入密码">
+                <input class="form-control" name="Manager_key" id="exampleInputPassword1" type="password" aria-describedby="passwordHelp" placeholder="输入密码">
             </div>
           <!-- <div class="form-group">
             <div class="form-row">
@@ -75,14 +82,15 @@
           </div> -->
           <div class="form-group">
             <div class="form-row">
-              <div class="col-md-6">
-                <a class="btn btn-primary btn-block" href="login.html">完成注册</a>
+              <div class="col-md-8">
+                <button type="submit" style="width:180px;height:40px" class="btn btn-primary">注册成功</button>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <a class="btn btn-primary btn-block" href="login.html">返回</a>
               </div>
             </div>
           </div>
+            </div>
         </form>
         <!-- <div class="text-center">
           <a class="d-block small mt-3" href="login.html">Login Page</a>

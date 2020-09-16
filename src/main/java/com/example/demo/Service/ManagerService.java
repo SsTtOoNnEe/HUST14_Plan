@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ManagerService {
     List<Manager> findAllManagers();
+
+    Integer ad_register(Manager manager);
 }
