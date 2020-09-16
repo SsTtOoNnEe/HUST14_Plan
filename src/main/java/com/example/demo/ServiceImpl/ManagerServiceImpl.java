@@ -18,4 +18,9 @@ public class ManagerServiceImpl implements ManagerService {
     public List<Manager> findAllManagers() {
         return managerMapper.findAllManagers();
     }
+
+    @Override
+    public Integer ad_register(Manager manager) {
+        return managerMapper.ad_register(manager);
+    }
 }
