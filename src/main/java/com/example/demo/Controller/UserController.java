@@ -138,6 +138,7 @@ public class UserController {
 
         return "redirect:/UserPage/allplan/"+User_name;
     }
+
     @PostMapping("deleteplan/{User_name}/{Task_name}")
     public String deletePlan(@PathVariable("User_name") String User_name,@PathVariable("Task_name") String Task_name, Task task){
         Integer task_id=taskService.findTaskIdByName(task.getTask_name());
@@ -178,55 +179,55 @@ public class UserController {
         return "editplan";
     }
 
-    @GetMapping("/pause/{taskId}")
-    public String getPausePlan(Model model,@PathVariable("taskId") String taskId){
+    @GetMapping("/pause/{User_name}/{taskId}")
+    public String getPausePlan(Model model,@PathVariable("taskId") String taskId,@PathVariable("User_name") String User_name){
         Integer id = Integer.parseInt(taskId);
         Task task = taskService.findTaskByID(id);
         model.addAttribute("task",task);
-        Integer userId = taskService.findUserIdByTaskId(taskId);
-        User user = userService.getUserByUserID(userId);
+
+        User user = userService.findUserByName(User_name);
         model.addAttribute("user",user);
         return "pauseplan";
     }
 
 
-    @PostMapping("/testPage")
-    public String postPauseTime(String taskId,String leftTime,Model model){
+    @PostMapping("/testPage/{User_name}")
+    public String postPauseTime(@PathVariable("User_name") String User_name,String taskId,String leftTime,Model model){
         Integer id = Integer.parseInt(taskId);
         userService.updateLeftTime(id,leftTime);
-        Integer userId = taskService.findUserIdByTaskId(taskId);
-        User user = userService.getUserByUserID(userId);
+
+        User user = userService.findUserByName(User_name);
         model.addAttribute("user",user);
-        return "redirect:/UserPage/pause/"+taskId;
+        return "redirect:/UserPage/pause/"+User_name+'/'+taskId;
     }
 
-    @GetMapping("/testPage/{task_ID}")
-    public String getTestPage(@PathVariable("task_ID") String taskId,Model model){
+    @GetMapping("/testPage/{User_name}/{task_ID}")
+    public String getTestPage(@PathVariable("task_ID") String taskId,@PathVariable("User_name") String User_name,Model model){
         Integer taskid = Integer.parseInt(taskId);
         Task task = taskService.findTaskByID(taskid);
         model.addAttribute("task",task);
-        Integer userId = taskService.findUserIdByTaskId(taskId);
-        User user = userService.getUserByUserID(userId);
+
+        User user = userService.findUserByName(User_name);
         model.addAttribute("user",user);
         return "blank";
     }
 
-    @GetMapping("/start/{task_ID}")
-    public String getTestPage(Model model,@PathVariable("task_ID") String taskId){
+    @GetMapping("/start/{User_name}/{task_ID}")
+    public String getTestPage(Model model,@PathVariable("task_ID") String taskId,@PathVariable("User_name") String User_name){
         Integer taskid = Integer.parseInt(taskId);
         Task task = taskService.findTaskByID(taskid);
 
         model.addAttribute("task",task);
-        return "redirect:/UserPage/testPage/"+ taskId;
+        return "redirect:/UserPage/testPage/"+User_name+"/"+taskId;
     }
 
-    @GetMapping("/continueFromPause/{task_name}")
-    public String continuePlan(@PathVariable("task_name") String taskName,Model model){
+    @GetMapping("/continueFromPause/{task_name}/{User_name}")
+    public String continuePlan(@PathVariable("task_name") String taskName,@PathVariable("User_name") String User_name,Model model){
         Integer id = taskService.findTaskIdByName(taskName);
         String str =  id.toString();
         Task task = taskService.findTaskByID(id);
         model.addAttribute("task",task);
-        return "redirect:/UserPage/testPage/"+str;
+        return "redirect:/UserPage/testPage/"+User_name+'/'+id;
     }
 
 }
