@@ -22,8 +22,9 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public Manager getPwdByManagerName(String Manager_name, String Manager_pwd) {
-        return managerMapper.getPwdByManagerName(Manager_name,Manager_pwd);
-
+        return managerMapper.getPwdByManagerName(Manager_name, Manager_pwd);
+    }
+    @Override
     public Integer ad_register(Manager manager) {
         return managerMapper.ad_register(manager);
 

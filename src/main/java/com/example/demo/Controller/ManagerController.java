@@ -38,17 +38,18 @@ public class ManagerController {
 
     @PostMapping("/selectPwd")
     public String selectPwd(String ManagerName, String ManagerPwd, Model model) {
-        Manager manager = managerService.getPwdByManagerName(ManagerName,ManagerPwd);
+        Manager manager = managerService.getPwdByManagerName(ManagerName, ManagerPwd);
         if (manager != null && manager.getManager_pwd().equals(ManagerPwd)) {
             System.out.println("登录成功！");
             List<User> users = userService.getAllUser();
-            model.addAttribute("users",users);
+            model.addAttribute("users", users);
             return "alluser";
 
         } else {
             System.out.println("用户名或密码错误！");
             return "loginerrorM";
         }
+    }
 
     @GetMapping("/ad_register")
     public String getManagerRegister(){
@@ -58,8 +59,7 @@ public class ManagerController {
     @PostMapping("/ad_register")
     public String getManagerRegister(Manager manager){
         managerService.ad_register(manager);
-        return "redirect:/ManagerPage/ad_register";
-
+        return "redirect:/ManagerPage/loginM";
     }
 
 }
