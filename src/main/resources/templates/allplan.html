@@ -193,12 +193,12 @@
                                 </a>
                             </td>
                         </tr>
-                        <a href="/UserPage/startplan">
+                        <a th:href=@{'/UserPage/startplan/'+${user.User_name}+'/1'+}>
                             <button class="btn btn-info startfirstplan" type="submit"
                                     style="position:absolute;left:20%;bottom:10%;">start
                             </button>
                         </a>
-                        <a href="/UserPage/editplan">
+                        <a th:href=@{'/UserPage/editplan/'+${user.User_name}+'/1'+}>
                             <button class="btn btn-info editMyplan" type="submit"
                                     style="position:absolute;right:20%;bottom:10%;">edit
                             </button>
@@ -282,7 +282,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a th:href="'/UserPage/start/'+${task.Task_ID}"><img class="duBtn img-thumbnail" src="/img/startplan.png"
+                                    <a th:href="'/UserPage/start/'+${user.User_name}+'/'+${task.Task_ID}"><img class="duBtn img-thumbnail" src="/img/startplan.png"
                                                                   width="50px"></a>
                                 </td>
                                 <td>
