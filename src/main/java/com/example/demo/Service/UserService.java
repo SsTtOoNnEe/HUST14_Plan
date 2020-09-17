@@ -19,7 +19,7 @@ public interface UserService {
     List<String> getAllName();
 
 
-    List<User> rankMyFriend();
+    List<User> rankMyFriend(Integer user_id);
 
     Integer updateUserByName(User user);
 

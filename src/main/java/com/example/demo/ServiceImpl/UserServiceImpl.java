@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public List<User> rankMyFriend() {
-        List<User> list = userMapper.rankMyFriend();
+    public List<User> rankMyFriend(Integer user_id) {
+        List<User> list = userMapper.rankMyFriend(user_id);
         return list;
     }
 

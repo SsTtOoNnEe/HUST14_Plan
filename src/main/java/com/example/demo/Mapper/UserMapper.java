@@ -27,8 +27,10 @@ public interface UserMapper {
     List<String> getAllName();
 
 
-    @Select("select * from hust_plan.user_info order by User_learningTime DESC")
-    List<User> rankMyFriend();
+
+    @Select("SELECT * FROM user_info WHERE User_ID IN" +
+            "(SELECT friend_id FROM friend_info WHERE user_id = ${user_id}) order by User_learningTime DESC")
+    List<User> rankMyFriend(Integer user_id);
 
     @Update("update user_info set Tasks_ID=#{Tasks_ID} where User_name=#{User_name}")
     Integer updateUserTasksID(@Param("Tasks_ID") String Tasks_ID,@Param("User_name") String User_name);
@@ -38,8 +40,6 @@ public interface UserMapper {
 
     @Update("update user_info set User_pwd=#{User_pwd},User_sex=#{User_sex},User_bir=#{User_bir},User_phone=#{User_phone},User_email=#{User_email},User_tagSchool=#{User_tagSchool},User_slogan=#{User_slogan} where User_name=#{User_name};")
     Integer updateUserByName(User user);
-
-
 
 
     @Insert("INSERT INTO friend_info (User_ID,Friend_ID) VALUES (${User_ID},${Friend_ID})")

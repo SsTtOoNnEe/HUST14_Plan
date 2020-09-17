@@ -95,12 +95,12 @@
 
           <div style="background: rgba(174, 228, 48, 0.2);border-radius:10px;width:100%;height:300px;position:relative;">
             <div style="color:red;position:absolute;left:30%;bottom:80%;">
-              <input th:value="${task.getTask_name()}+'正在进行中'">
+              <a th:text="${task.getTask_name()}+'正在进行中'"></a>
             </div>
 
             <div  style="color:red;position:absolute;left:30%;bottom:40%;"><textarea id="timer"  rows="1"></textarea></div>
             <div style="position:absolute;left:40%;bottom:10%;">
-              <form action="/UserPage/testPage" method="post">
+              <form th:action="'/UserPage/testPage/'+${user.getUser_name()}" method="post">
                 <input th:value="${task.getTask_leftTime()}" id="planTable" style="display:none" >
                 <input id="taskIdLeftTime" th:value="${task.getTask_ID()}" name="taskId" style="display:none">
                 <input style="display: none" name="leftTime" id="leftTimeValue">

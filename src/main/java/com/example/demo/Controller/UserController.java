@@ -10,8 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("UserPage")
@@ -89,8 +92,6 @@ public class UserController {
         User user = userService.findUserByName(User_name);
         model.addAttribute("user", user);
 
-
-
         String[] tasksID = user.getTasks_ID().split(",");
 
         List<Task> tasks = new ArrayList<>();
@@ -137,7 +138,8 @@ public class UserController {
     @GetMapping("/rank/{User_name}")
     public String rankPage(@PathVariable("User_name") String User_name, Model model) {
         User user = userService.findUserByName(User_name);
-        List<User> rankList = userService.rankMyFriend();
+        Integer userID = userService.getIDbyUserName(User_name);
+        List<User> rankList = userService.rankMyFriend(userID);
         model.addAttribute("user",user);
         model.addAttribute("rankList", rankList);
         return "rankoffriend";
@@ -149,20 +151,21 @@ public class UserController {
         Integer i = taskService.addTask(task);
         Integer task_id = taskService.findTaskIdByName(task.getTask_name());
         User user = userService.findUserByName(User_name);
-        String tasks_id = user.getTasks_ID()+','+task_id;
+        String tasks_id = user.getTasks_ID()+task_id+',';
         Integer j = userService.updateUserTasksID(tasks_id,User_name);
 
         return "redirect:/UserPage/allplan/"+User_name;
     }
-    @PostMapping("deleteplan/{User_name}/{Task_name}")
-    public String deletePlan(@PathVariable("User_name") String User_name,@PathVariable("Task_name") String Task_name, Task task){
-        Integer task_id=taskService.findTaskIdByName(task.getTask_name());
+
+    @GetMapping("deleteplan/{User_name}/{Task_name}")
+    public String deletePlan(@PathVariable("User_name") String User_name,@PathVariable("Task_name") String Task_name){
+        Integer task_id=taskService.findTaskIdByName(Task_name);
         User user=userService.findUserByName(User_name);
-        String tasks_id=user.getTasks_ID();
+        String tasks_id =user.getTasks_ID();
         String[] str=tasks_id.split(",");
         StringBuilder sb=new StringBuilder();
         for(String ss:str){
-            if(ss.equals(task_id)){
+            if(ss.equals(task_id.toString())){
                 continue;
             }
             sb.append(ss+",");
@@ -178,8 +181,20 @@ public class UserController {
     public String friendList(@PathVariable("User_name")String User_name, Model model) {
         User user = userService.findUserByName(User_name);
         List<User> users = userService.getAllUser();
-
-        model.addAttribute("users",users);
+        Integer userID = userService.getIDbyUserName(User_name);
+        List<User> friends = userService.rankMyFriend(userID);
+        Set<String> set = new HashSet<>();
+        set.add(User_name);
+        for(User friend : friends){
+            set.add(friend.getUser_name());
+        }
+        ArrayList<User> theUsers = new ArrayList<>();
+        for(User theUser : users){
+            if(!set.contains(theUser.getUser_name())){
+                theUsers.add(theUser);
+            }
+        }
+        model.addAttribute("users",theUsers);
         model.addAttribute("user",user);
         return "addfriend";
     }
@@ -189,60 +204,70 @@ public class UserController {
         return "startplan";
     }
 
-    @GetMapping("/editplan")
-    public String getEditPlan(){
-        return "editplan";
-    }
 
-    @GetMapping("/pause/{taskId}")
-    public String getPausePlan(Model model,@PathVariable("taskId") String taskId){
+    @GetMapping("/pause/{User_name}/{taskId}")
+    public String getPausePlan(Model model,@PathVariable("taskId") String taskId,@PathVariable("User_name") String User_name){
         Integer id = Integer.parseInt(taskId);
         Task task = taskService.findTaskByID(id);
         model.addAttribute("task",task);
-        Integer userId = taskService.findUserIdByTaskId(taskId);
-        User user = userService.getUserByUserID(userId);
+
+        User user = userService.findUserByName(User_name);
         model.addAttribute("user",user);
         return "pauseplan";
     }
 
 
-    @PostMapping("/testPage")
-    public String postPauseTime(String taskId,String leftTime,Model model){
+    @PostMapping("/testPage/{User_name}")
+    public String postPauseTime(@PathVariable("User_name") String User_name,String taskId,String leftTime,Model model){
         Integer id = Integer.parseInt(taskId);
         userService.updateLeftTime(id,leftTime);
-        Integer userId = taskService.findUserIdByTaskId(taskId);
-        User user = userService.getUserByUserID(userId);
+
+        User user = userService.findUserByName(User_name);
         model.addAttribute("user",user);
-        return "redirect:/UserPage/pause/"+taskId;
+        return "redirect:/UserPage/pause/"+User_name+'/'+taskId;
     }
 
-    @GetMapping("/testPage/{task_ID}")
-    public String getTestPage(@PathVariable("task_ID") String taskId,Model model){
+    @GetMapping("/testPage/{User_name}/{task_ID}")
+    public String getTestPage(@PathVariable("task_ID") String taskId,@PathVariable("User_name") String User_name,Model model){
         Integer taskid = Integer.parseInt(taskId);
         Task task = taskService.findTaskByID(taskid);
         model.addAttribute("task",task);
-        Integer userId = taskService.findUserIdByTaskId(taskId);
-        User user = userService.getUserByUserID(userId);
+
+        User user = userService.findUserByName(User_name);
         model.addAttribute("user",user);
         return "blank";
     }
 
-    @GetMapping("/start/{task_ID}")
-    public String getTestPage(Model model,@PathVariable("task_ID") String taskId){
+    @GetMapping("/start/{User_name}/{task_ID}")
+    public String getTestPage(Model model,@PathVariable("task_ID") String taskId,@PathVariable("User_name") String User_name){
         Integer taskid = Integer.parseInt(taskId);
         Task task = taskService.findTaskByID(taskid);
 
         model.addAttribute("task",task);
-        return "redirect:/UserPage/testPage/"+ taskId;
+        return "redirect:/UserPage/testPage/"+User_name+"/"+taskId;
     }
 
-    @GetMapping("/continueFromPause/{task_name}")
-    public String continuePlan(@PathVariable("task_name") String taskName,Model model){
+    @GetMapping("/continueFromPause/{task_name}/{User_name}")
+    public String continuePlan(@PathVariable("task_name") String taskName,@PathVariable("User_name") String User_name,Model model){
         Integer id = taskService.findTaskIdByName(taskName);
         String str =  id.toString();
         Task task = taskService.findTaskByID(id);
         model.addAttribute("task",task);
-        return "redirect:/UserPage/testPage/"+str;
+        return "redirect:/UserPage/testPage/"+User_name+'/'+id;
+    }
+
+    @GetMapping("/editplan/{User_name}/{Task_ID}")
+    public String editplan(@PathVariable("User_name") String User_name,@PathVariable("Task_ID") Integer Task_ID,
+                           Model model){
+        Task task = taskService.findTaskByID(Task_ID);
+
+        model.addAttribute("task",task);
+        return "editplan";
+    }
+
+    @PostMapping("/editplan/{User_name}/{Task_ID}")
+    public String postEditplan(@PathVariable("User_name") String User_name,@PathVariable("Task_ID") Integer Task_ID){
+        return "redirect:/UserPage/allplan"+User_name;
     }
 
 }
