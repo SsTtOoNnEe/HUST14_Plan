@@ -20,4 +20,8 @@ public interface TaskMapper {
     @Delete("delete from task_info where Task_name=${Task_name}")
     void deleteTaskByName(String Task_name);
 
+    @Select("select User_ID from task_info where Task_ID=#{Task_ID}")
+    Integer findUserIdByTaskId(String Task_ID);
+
+
 }

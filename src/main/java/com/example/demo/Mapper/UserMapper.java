@@ -1,11 +1,11 @@
 package com.example.demo.Mapper;
 
-import com.example.demo.Entity.Task;
+
 import com.example.demo.Entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
-import java.util.Map;
+
 
 @Mapper
 public interface UserMapper {
@@ -19,7 +19,7 @@ public interface UserMapper {
 
     @Insert("INSERT INTO user_info (User_name,User_pwd,User_sex,User_bir,User_phone,User_email,User_tagSchool,User_slogan,Tasks_ID) values(#{User_name},#{User_pwd},#{User_sex},#{User_bir},#{User_phone},#{User_email},#{User_tagSchool},#{User_slogan},'1,')")
     Integer register(User user);
-  
+
     @Select("SELECT * FROM hust_plan.user_info")
     List<User> getAllUser();
 
@@ -27,13 +27,11 @@ public interface UserMapper {
     List<String> getAllName();
 
 
-    @Select("select * from hust_plan.testforrank order by User_learningTime DESC")
+    @Select("select * from hust_plan.user_info order by User_learningTime DESC")
     List<User> rankMyFriend();
 
     @Update("update user_info set Tasks_ID=#{Tasks_ID} where User_name=#{User_name}")
     Integer updateUserTasksID(@Param("Tasks_ID") String Tasks_ID,@Param("User_name") String User_name);
-
-
 
     @Update("update task_info set Task_leftTime=#{leftTime} where Task_ID=#{taskId}")
     Integer updateLeftTime(@Param("taskId") Integer taskId,@Param("leftTime") String leftTime);
@@ -49,5 +47,9 @@ public interface UserMapper {
 
     @Select("SELECT User_ID FROM user_info WHERE User_name = #{User_name}")
     Integer getIDbyUserName(String User_name);
+
+    @Select("select* from user_info where User_ID = #{User_ID}")
+    User getUserByUserID(int User_ID);
+
 
 }
