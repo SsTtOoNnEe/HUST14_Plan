@@ -77,5 +77,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.getUserByUserID(User_ID);
     }
 
+    @Override
+    public Integer updateDiaryID(String User_name, String Diaries_ID) {
+        return userMapper.updateDiaryID(User_name,Diaries_ID);
+    }
+
 
 }

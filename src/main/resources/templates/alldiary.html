@@ -146,11 +146,11 @@
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" th:href="@{'/UserPage/alldiary/'+${user.User_name}}">
-                    <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">日记</span>
-                </a>
-            </li>
+            <a class="nav-link" th:href="@{'/UserPage/alldiary/'+${user.User_name}}">
+                <i class="fa fa-fw fa-area-chart"></i>
+                <span class="nav-link-text">日记</span>
+            </a>
+        </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" th:href="@{'/UserPage/settings/'+${user.User_name}}">
@@ -175,36 +175,16 @@
                                                                    border="0">
                     </div>
                 </div>
-                <!-- 添加任务时弹窗 -->
+                <!-- 添加日记时弹窗 -->
                 <div id="myModal" class="modal" style="margin:0 auto;width:60%;">
                     <!-- 弹窗内容 -->
                     <div class="modal-content">
                         <div class="close"
                              style="background:rgba(174, 228, 48, 0.2);border-radius:30px;width:100%;height:300px;position:relative;">
-                            <form th:action="@{'/UserPage/addplan/'+${user.User_name}}" method="post">
+                            <form th:action="@{'/UserPage/adddiary/'+${user.User_name}}" method="post">
                                 <div class="row">
-                                    <div class="col-3"><label class="control-label">计划名称</label></div>
-                                    <div class="col-5 col-offset-2"><input type="text" class="form-control"
-                                                                           name="Task_name"
-                                                                           placeholder="在此添加计划名称"></div>
-                                    <div class="col-2 "><img src="/img/close.png" class="closePic" width="50%"></div>
+                                    <textarea name="Diary_content"></textarea>
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-3"><label class="control-label">类型</label></div>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="Task_type" value="1" class="jishi"> 计时</label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="Task_type" value="0" class="daojishi">倒计时</label>
-                                </div>
-                                <br>
-                                <div class="row timeLength" style="visibility:hidden">
-                                    <div class="col-3"><label class="control-label">时长</label></div>
-                                    <div class="col-5 col-offset-2"><input type="text" class="form-control"
-                                                                           name="Task_time"
-                                                                           placeholder="300"></div>
-                                </div>
-                                <br>
                                 <div class="row">
                                     <div class="col-3" style="margin:0 auto;">
                                         <button type="submit" class="btn btn-info">完成</button>
@@ -259,7 +239,8 @@
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" aria-valuemin="0"
                                          aria-valuemax="100" th:text="${100-task.getPercent()}+'%'"
-                                         th:style="'width:'+${100-task.getPercent()}+'%'" th:aria-valuenow="${100-task.getPercent()}">
+                                         th:style="'width:'+${100-task.getPercent()}+'%'"
+                                         th:aria-valuenow="${100-task.getPercent()}">
                                     </div>
                                 </div>
                             </td>
@@ -275,26 +256,16 @@
         <div class="row">
             <div class="col-9 ">
 
-                <div th:each="task:${tasks}" style="width:50%;height:300px;float:left;">
+                <div th:each="diary:${diaries}" style="width:50%;height:300px;float:left;">
                     <div style="background: rgba(40, 130, 231, 0.3);border-radius:10px;width:80%;height:80%;margin:0 auto;">
                         <table class="table">
                             <tr>
-                                <th>任务名称</th>
-                                <th>任务时长</th>
+                                <th>日记时间</th>
+                                <th>日记内容</th>
                             </tr>
                             <tr>
-                                <td th:text="${task.getTask_name()}">Math</td>
-                                <td th:text="${task.getTask_time()}">5h30min</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a th:href="'/UserPage/start/'+${user.User_name}+'/'+${task.Task_ID}"><img
-                                            class="duBtn img-thumbnail" src="/img/startplan.png"
-                                            width="50px"></a>
-                                </td>
-                                <td>
-                                    <a th:href="'/UserPage/editplan/'+${user.User_name}+'/'+${task.Task_ID}">edit</a>
-                                </td>
+                                <td th:text="${diary.getDiary_createdTime()}">Math</td>
+                                <td th:text="${diary.getDiary_content()}">5h30min</td>
                             </tr>
                         </table>
                     </div>
@@ -369,51 +340,17 @@
         timelen.style.visibility = "visible";
     }
 </script>
-<!-- 
+
+
 <script>
-  // 获取弹窗
-  var du = document.getElementById("dupeng");
-  // alert(du);
-  // function duPengShow() {
-  // du.style.display = "block";
-  //  }  
-  // 打开弹窗的按钮对象
-   //var btn = document.getElementById("duBtn");  
-   var list = document.getElementsByClassName("duBtn");
-
-   for(var i in list){
-    list[i].onclick= function(){
-       du.style.display = "block";
-   }  
-
-   }  
-  </script>
-
-  <script>
-    var xu=document.getElementById("xuzhiwen");
-    var list=document.getElementsByClassName("editMyplan");
-    for(var i in list){
-      list[i].onclick=function(){
-        xu.style.display="block";
-      }
+    var btn2 = document.querySelector(".startfirstplan");
+    var modal2 = document.getElementById("myFirstplan");
+    btn2.onclick = function () {
+        modal2.style.display = "block";
     }
-  </script>
-  
+</script>
 
 
-
-
-
-
-  <script>
-  var btn2 = document.querySelector(".startfirstplan");
-  var modal2 = document.getElementById("myFirstplan");
-  btn2.onclick = function(){
-  modal2.style.display = "block";
-  }
-  </script>
-  
- -->
 
 
 <script type="text/javascript">

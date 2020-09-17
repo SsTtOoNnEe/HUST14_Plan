@@ -1,16 +1,18 @@
 package com.example.demo.Controller;
 
 
+import com.example.demo.Entity.Diary;
 import com.example.demo.Entity.Task;
 import com.example.demo.Entity.User;
+import com.example.demo.Service.DiaryService;
 import com.example.demo.Service.TaskService;
 import com.example.demo.Service.UserService;
+import com.example.demo.ServiceImpl.DiaryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,6 +27,9 @@ public class UserController {
 
     @Autowired
     TaskService taskService;
+
+    @Autowired
+    DiaryService diaryService;
 
     @GetMapping("/register")
     public String getRegister() {
@@ -270,10 +275,50 @@ public class UserController {
     @PostMapping("/editplan/{User_name}/{Task_ID}")
     public String postEditplan(@PathVariable("User_name") String User_name,@PathVariable("Task_ID") Integer Task_ID,
                                Task task){
-//        Task task = taskService.findTaskByID(Task_ID);
         Integer i = taskService.editPlanByID(task);
         return "redirect:/UserPage/allplan/"+User_name;
     }
 
+    @GetMapping("/alldiary/{User_name}")
+    public String getDiary(@PathVariable("User_name") String User_name,Model model){
+
+        User user = userService.findUserByName(User_name);
+        String[] diaries_ID = user.getDiaries_ID().split(",");
+        List<Diary> diaries = new ArrayList<>();
+
+        String[] tasksID = user.getTasks_ID().split(",");
+
+        List<Task> tasks = new ArrayList<>();
+
+        for (int i = 0; i < tasksID.length; i++) {
+            System.out.println(tasksID[i]);
+            Task task = taskService.findTaskByID(Integer.parseInt(tasksID[i]));
+            tasks.add(task);
+        }
+
+        for (int i = 0; i < diaries_ID.length; i++) {
+            System.out.println(diaries_ID[i]);
+            Diary diary = diaryService.findDiaryByID(Integer.parseInt(diaries_ID[i]));
+            diaries.add(diary);
+        }
+
+        model.addAttribute("user",user);
+        model.addAttribute("diaries",diaries);
+        model.addAttribute("tasks",tasks);
+        return "alldiary";
+    }
+
+    @PostMapping("/adddiary/{User_name}")
+    public String addDiary(@PathVariable("User_name") String User_name,String Diary_content){
+
+        Integer i = diaryService.addDiary(Diary_content);
+        Integer diary_ID = diaryService.findDiaryIDByContent(Diary_content);
+
+        User user = userService.findUserByName(User_name);
+        String newDiariesID = user.getDiaries_ID()+diary_ID.toString()+",";
+        Integer j = userService.updateDiaryID(User_name,newDiariesID);
+
+        return "redirect:/UserPage/alldiary/"+User_name;
+    }
 
 }
