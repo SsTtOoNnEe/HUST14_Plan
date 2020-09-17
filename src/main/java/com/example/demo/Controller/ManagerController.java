@@ -59,8 +59,7 @@ public class ManagerController {
     @PostMapping("/ad_register")
     public String getManagerRegister(Manager manager){
         managerService.ad_register(manager);
-        return "redirect:/ManagerPage/ad_register";
-
+        return "redirect:/ManagerPage/loginM";
     }
 
 }
