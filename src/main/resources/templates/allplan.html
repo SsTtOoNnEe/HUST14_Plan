@@ -288,7 +288,7 @@
                                                                   width="50px"></a>
                                 </td>
                                 <td>
-                                    <button class="btn btn-info editMyplan" type="submit">edit</button>
+                                    <a th:href="'/UserPage/editplan/'+${user.User_name}+'/'+${task.Task_ID}">edit</a>
                                 </td>
                             </tr>
                         </table>
