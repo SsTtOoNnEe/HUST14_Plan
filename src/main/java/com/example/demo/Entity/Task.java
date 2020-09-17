@@ -31,8 +31,6 @@ public class Task {
         Task_leftTime = task_leftTime;
     }
 
-
-
     public String getTask_name() {
         return Task_name;
     }
