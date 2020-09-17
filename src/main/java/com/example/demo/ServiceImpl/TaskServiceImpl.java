@@ -31,8 +31,14 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public void deleteTaskByName(String Task_name) {
+        taskMapper.deleteTaskByName(Task_name);
+    }
+
+    @Override
     public Integer findUserIdByTaskId(String Task_ID) {
         return taskMapper.findUserIdByTaskId(Task_ID);
+
     }
 
 }
