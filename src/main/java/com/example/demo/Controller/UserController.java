@@ -10,8 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("UserPage")
@@ -135,7 +138,8 @@ public class UserController {
     @GetMapping("/rank/{User_name}")
     public String rankPage(@PathVariable("User_name") String User_name, Model model) {
         User user = userService.findUserByName(User_name);
-        List<User> rankList = userService.rankMyFriend();
+        Integer userID = userService.getIDbyUserName(User_name);
+        List<User> rankList = userService.rankMyFriend(userID);
         model.addAttribute("user",user);
         model.addAttribute("rankList", rankList);
         return "rankoffriend";
@@ -177,8 +181,20 @@ public class UserController {
     public String friendList(@PathVariable("User_name")String User_name, Model model) {
         User user = userService.findUserByName(User_name);
         List<User> users = userService.getAllUser();
-
-        model.addAttribute("users",users);
+        Integer userID = userService.getIDbyUserName(User_name);
+        List<User> friends = userService.rankMyFriend(userID);
+        Set<String> set = new HashSet<>();
+        set.add(User_name);
+        for(User friend : friends){
+            set.add(friend.getUser_name());
+        }
+        ArrayList<User> theUsers = new ArrayList<>();
+        for(User theUser : users){
+            if(!set.contains(theUser.getUser_name())){
+                theUsers.add(theUser);
+            }
+        }
+        model.addAttribute("users",theUsers);
         model.addAttribute("user",user);
         return "addfriend";
     }
