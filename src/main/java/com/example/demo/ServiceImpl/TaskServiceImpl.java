@@ -30,4 +30,9 @@ public class TaskServiceImpl implements TaskService {
         return taskMapper.addTask(task);
     }
 
+    @Override
+    public void deleteTaskByName(String Task_name) {
+        taskMapper.deleteTaskByName(Task_name);
+    }
+
 }

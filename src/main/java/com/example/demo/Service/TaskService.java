@@ -11,4 +11,6 @@ public interface TaskService {
 
     Integer addTask(Task task);
 
+    void deleteTaskByName(String Task_name);
+
 }

@@ -134,6 +134,25 @@ public class UserController {
 
         return "redirect:/UserPage/allplan/"+User_name;
     }
+    @PostMapping("deleteplan/{User_name}/{Task_name}")
+    public String deletePlan(@PathVariable("User_name") String User_name,@PathVariable("Task_name") String Task_name, Task task){
+        Integer task_id=taskService.findTaskIdByName(task.getTask_name());
+        User user=userService.findUserByName(User_name);
+        String tasks_id=user.getTasks_ID();
+        String[] str=tasks_id.split(",");
+        StringBuilder sb=new StringBuilder();
+        for(String ss:str){
+            if(ss.equals(task_id)){
+                continue;
+            }
+            sb.append(ss+",");
+        }
+        System.out.println(sb.toString());
+        tasks_id=sb.toString();
+        Integer j=userService.updateUserTasksID(tasks_id,User_name);
+        taskService.deleteTaskByName(Task_name);
+        return "redirect:/UserPage/allplan/"+User_name;
+    }
 
     @GetMapping("addfriends/{User_name}")
     public String friendList(@PathVariable("User_name")String User_name, Model model) {
