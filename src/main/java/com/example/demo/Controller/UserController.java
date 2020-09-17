@@ -88,6 +88,22 @@ public class UserController {
     public String getUserAnalysis(@PathVariable("User_name") String User_name, Model model) {
         User user = userService.findUserByName(User_name);
         model.addAttribute("user", user);
+
+
+
+        String[] tasksID = user.getTasks_ID().split(",");
+
+        List<Task> tasks = new ArrayList<>();
+
+        for (int i = 0; i < tasksID.length; i++) {
+            System.out.println(tasksID[i]);
+            Task task = taskService.findTaskByID(Integer.parseInt(tasksID[i]));
+            tasks.add(task);
+        }
+
+        model.addAttribute("tasks", tasks);
+
+
         return "testchart";
     }
 
