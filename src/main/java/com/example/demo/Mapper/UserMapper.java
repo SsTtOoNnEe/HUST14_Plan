@@ -27,7 +27,8 @@ public interface UserMapper {
     List<String> getAllName();
 
 
-    @Select("select * from hust_plan.testforrank order by User_learningTime DESC")
+    @Select("SELECT * FROM user_info WHERE User_ID IN\n" +
+            "(SELECT friend_id FROM friend_info WHERE user_id = ${user_id})\n order by User_learningTime DESC")
     List<User> rankMyFriend();
 
     @Update("update user_info set Tasks_ID=#{Tasks_ID} where User_name=#{User_name}")

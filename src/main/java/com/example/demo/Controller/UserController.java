@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -136,8 +137,14 @@ public class UserController {
     public String friendList(@PathVariable("User_name")String User_name, Model model) {
         User user = userService.findUserByName(User_name);
         List<User> users = userService.getAllUser();
-
-        model.addAttribute("users",users);
+        List<User> friends = userService.rankMyFriend();
+        ArrayList<User> theUsers = new ArrayList<>();
+        for(User theUser : users){
+            if(!theUser.getUser_name().equals(User_name)){
+                theUsers.add(theUser);
+            }
+        }
+        model.addAttribute("users",theUsers);
         model.addAttribute("user",user);
         return "addfriend";
     }
