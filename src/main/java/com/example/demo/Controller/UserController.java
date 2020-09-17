@@ -171,7 +171,6 @@ public class UserController {
     }
 
 
-
     @PostMapping("/testPage")
     public String postPauseTime(String taskId,String leftTime,Model model){
         Integer id = Integer.parseInt(taskId);
@@ -210,10 +209,5 @@ public class UserController {
         model.addAttribute("task",task);
         return "redirect:/UserPage/testPage/"+str;
     }
-
-
-
-
-
 
 }
