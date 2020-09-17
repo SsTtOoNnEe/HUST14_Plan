@@ -17,4 +17,6 @@ public interface TaskService {
 
     Integer findUserIdByTaskId(String Task_ID);
 
+    Integer editPlanByID(Task task);
+
 }
