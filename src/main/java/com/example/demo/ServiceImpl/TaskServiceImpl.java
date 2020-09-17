@@ -41,4 +41,9 @@ public class TaskServiceImpl implements TaskService {
 
     }
 
+    @Override
+    public Integer editPlanByID(Task task) {
+        return taskMapper.editPlanByID(task);
+    }
+
 }

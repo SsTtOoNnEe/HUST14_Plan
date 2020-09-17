@@ -23,5 +23,6 @@ public interface TaskMapper {
     @Select("select User_ID from task_info where Task_ID=#{Task_ID}")
     Integer findUserIdByTaskId(String Task_ID);
 
-
+    @Update("update task_info set Task_name=#{Task_name},Task_time=#{Task_time} where Task_ID=${Task_ID}")
+    Integer editPlanByID(Task task);
 }

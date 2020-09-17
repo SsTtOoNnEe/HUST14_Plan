@@ -260,14 +260,20 @@ public class UserController {
     public String editplan(@PathVariable("User_name") String User_name,@PathVariable("Task_ID") Integer Task_ID,
                            Model model){
         Task task = taskService.findTaskByID(Task_ID);
+        User user = userService.findUserByName(User_name);
 
         model.addAttribute("task",task);
+        model.addAttribute("user",user);
         return "editplan";
     }
 
     @PostMapping("/editplan/{User_name}/{Task_ID}")
-    public String postEditplan(@PathVariable("User_name") String User_name,@PathVariable("Task_ID") Integer Task_ID){
-        return "redirect:/UserPage/allplan"+User_name;
+    public String postEditplan(@PathVariable("User_name") String User_name,@PathVariable("Task_ID") Integer Task_ID,
+                               Task task){
+//        Task task = taskService.findTaskByID(Task_ID);
+        Integer i = taskService.editPlanByID(task);
+        return "redirect:/UserPage/allplan/"+User_name;
     }
+
 
 }
