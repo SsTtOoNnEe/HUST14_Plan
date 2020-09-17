@@ -1,5 +1,6 @@
 package com.example.demo.ServiceImpl;
 
+import com.example.demo.Entity.Task;
 import com.example.demo.Entity.User;
 import com.example.demo.Mapper.UserMapper;
 import com.example.demo.Service.UserService;
@@ -41,8 +42,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public List<User> rankMyFriend() {
-        List<User> list = userMapper.rankMyFriend();
+    public List<User> rankMyFriend(Integer user_id) {
+        List<User> list = userMapper.rankMyFriend(user_id);
         return list;
     }
 
@@ -69,6 +70,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer getIDbyUserName(String User_name) {
         return userMapper.getIDbyUserName(User_name);
+    }
+
+    @Override
+    public User getUserByUserID(int User_ID) {
+        return userMapper.getUserByUserID(User_ID);
     }
 
 
