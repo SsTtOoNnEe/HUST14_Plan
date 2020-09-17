@@ -134,11 +134,9 @@
 
                     </div>
                     <div class="col-6">
-                      <button type="button" class="btn btn-info endPlan" >结束任务</button>
+                      <a type="button" class="btn btn-info endPlan" th:href="@{'/UserPage/deleteplan/'+${user.getUser_name()}+'/'+${task.getTask_name()}}" >结束任务</a>
                     </div>
                   </div>
-
-
 
                 </div>
               </div>

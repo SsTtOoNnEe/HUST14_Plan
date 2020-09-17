@@ -95,7 +95,7 @@
 
           <div style="background: rgba(174, 228, 48, 0.2);border-radius:10px;width:100%;height:300px;position:relative;">
             <div style="color:red;position:absolute;left:30%;bottom:80%;">
-              <a th:value="${task.getTask_name()}+'正在进行中'"></a>
+              <a th:text="${task.getTask_name()}+'正在进行中'"></a>
             </div>
 
             <div  style="color:red;position:absolute;left:30%;bottom:40%;"><textarea id="timer"  rows="1"></textarea></div>

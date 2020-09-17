@@ -89,8 +89,6 @@ public class UserController {
         User user = userService.findUserByName(User_name);
         model.addAttribute("user", user);
 
-
-
         String[] tasksID = user.getTasks_ID().split(",");
 
         List<Task> tasks = new ArrayList<>();
@@ -149,21 +147,21 @@ public class UserController {
         Integer i = taskService.addTask(task);
         Integer task_id = taskService.findTaskIdByName(task.getTask_name());
         User user = userService.findUserByName(User_name);
-        String tasks_id = user.getTasks_ID()+','+task_id;
+        String tasks_id = user.getTasks_ID()+task_id+',';
         Integer j = userService.updateUserTasksID(tasks_id,User_name);
 
         return "redirect:/UserPage/allplan/"+User_name;
     }
 
-    @PostMapping("deleteplan/{User_name}/{Task_name}")
-    public String deletePlan(@PathVariable("User_name") String User_name,@PathVariable("Task_name") String Task_name, Task task){
-        Integer task_id=taskService.findTaskIdByName(task.getTask_name());
+    @GetMapping("deleteplan/{User_name}/{Task_name}")
+    public String deletePlan(@PathVariable("User_name") String User_name,@PathVariable("Task_name") String Task_name){
+        Integer task_id=taskService.findTaskIdByName(Task_name);
         User user=userService.findUserByName(User_name);
-        String tasks_id=user.getTasks_ID();
+        String tasks_id =user.getTasks_ID();
         String[] str=tasks_id.split(",");
         StringBuilder sb=new StringBuilder();
         for(String ss:str){
-            if(ss.equals(task_id)){
+            if(ss.equals(task_id.toString())){
                 continue;
             }
             sb.append(ss+",");
@@ -190,10 +188,6 @@ public class UserController {
         return "startplan";
     }
 
-    @GetMapping("/editplan")
-    public String getEditPlan(){
-        return "editplan";
-    }
 
     @GetMapping("/pause/{User_name}/{taskId}")
     public String getPausePlan(Model model,@PathVariable("taskId") String taskId,@PathVariable("User_name") String User_name){
@@ -244,6 +238,20 @@ public class UserController {
         Task task = taskService.findTaskByID(id);
         model.addAttribute("task",task);
         return "redirect:/UserPage/testPage/"+User_name+'/'+id;
+    }
+
+    @GetMapping("/editplan/{User_name}/{Task_ID}")
+    public String editplan(@PathVariable("User_name") String User_name,@PathVariable("Task_ID") Integer Task_ID,
+                           Model model){
+        Task task = taskService.findTaskByID(Task_ID);
+
+        model.addAttribute("task",task);
+        return "editplan";
+    }
+
+    @PostMapping("/editplan/{User_name}/{Task_ID}")
+    public String postEditplan(@PathVariable("User_name") String User_name,@PathVariable("Task_ID") Integer Task_ID){
+        return "redirect:/UserPage/allplan"+User_name;
     }
 
 }
