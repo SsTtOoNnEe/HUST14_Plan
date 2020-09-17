@@ -82,18 +82,18 @@
           <th>任务名称</th>
           <th>任务时长</th>
         </tr>
-        <tr>
-          <td>English</td>
-          <td>600</td>
+        <tr th:each="task:${tasks}">
+          <td th:text="${task.getTask_name()}">English</td>
+          <td th:text="${task.getTask_intTime()-task.getTask_leftTime()}">600</td>
         </tr>    
-        <tr>
-          <td>Math</td>
-          <td>300</td>
-        </tr>  
-        <tr>
-          <td>Chinese</td> 
-          <td>75</td>
-        </tr>  
+<!--        <tr>-->
+<!--          <td>Math</td>-->
+<!--          <td>300</td>-->
+<!--        </tr>  -->
+<!--        <tr>-->
+<!--          <td>Chinese</td> -->
+<!--          <td>75</td>-->
+<!--        </tr>  -->
       </table>
 
       <div class="row">

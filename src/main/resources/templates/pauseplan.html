@@ -129,6 +129,7 @@
 
                             <input type="text" style="display:none" name="continueLeftTime" th:value="${task.getTask_leftTime()}"  >
 
+
                             <a th:href="@{'/UserPage/continueFromPause/'+${task.getTask_name()}+'/'+${user.getUser_name()}}">继续任务</a>
 
                     </div>

@@ -22,6 +22,11 @@ public class Task {
         return Task_leftTime;
     }
 
+    public Integer getPercent(){
+        double res = Task_leftTime*1.0/getTask_intTime()*100;
+         int i = (int)res;
+        return i;
+    }
     public void setTask_leftTime(Integer task_leftTime) {
         Task_leftTime = task_leftTime;
     }
@@ -38,6 +43,11 @@ public class Task {
 
     public String getTask_time() {
         return Task_time;
+    }
+
+    public Integer getTask_intTime(){
+        String str = getTask_time();
+        return Integer.parseInt(str);
     }
 
     public void setTask_time(String task_time) {
