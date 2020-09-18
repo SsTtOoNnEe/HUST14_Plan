@@ -15,19 +15,15 @@ public interface UserService {
 
     Integer register(User user);
 
-
     List<String> getAllName();
-
 
     List<User> rankMyFriend(Integer user_id);
 
     Integer updateUserByName(User user);
 
-
     Integer updateUserTasksID(String Tasks_ID,String User_name);
 
     Integer updateLeftTime(Integer taskId,String leftTime);
-
 
     Integer addFrind(Integer User_ID,Integer Friend_ID);
 
@@ -35,4 +31,5 @@ public interface UserService {
 
     User getUserByUserID(int User_ID);
 
+    Integer updateDiaryID(String User_name,String Diaries_ID);
 }

@@ -60,6 +60,13 @@
           </li>
 
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+              <a class="nav-link" th:href="@{'/UserPage/alldiary/'+${user.User_name}}">
+                  <i class="fa fa-fw fa-area-chart"></i>
+                  <span class="nav-link-text">日记</span>
+              </a>
+          </li>
+
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
               <a class="nav-link" th:href="@{'/UserPage/settings/'+${user.User_name}}">
                   <i class="fa fa-fw fa-area-chart"></i>
                   <span class="nav-link-text">设置</span>

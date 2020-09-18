@@ -14,6 +14,15 @@ public class User {
     private String Tasks_ID;
     private String User_phone;
     private Integer User_learningTime;
+    private String Diaries_ID;
+
+    public String getDiaries_ID() {
+        return Diaries_ID;
+    }
+
+    public void setDiaries_ID(String diaries_ID) {
+        Diaries_ID = diaries_ID;
+    }
 
     public Integer getUser_learningTime() {
         return User_learningTime;
