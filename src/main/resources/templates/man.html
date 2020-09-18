@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>SB Admin - Start Bootstrap Template</title>
+  <!-- Bootstrap core CSS-->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="/css/sb-admin.css" rel="stylesheet">
+
+  
+
+
+
+</head>
+
+<body >
+
+
+      <h1>管理员界面</h1>
+      <div >
+        <img src="/img/manager.jpg" width="50px" class="img-thumbnail">
+        <a href="/ManagerPage/loginM"><button class="btn btn-info">退出登录</button></a>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <tr>
+              <th>用户名</th>
+              <th>用户密码</th>
+              <th>性别</th>
+              <th>生日</th>
+              <th>目标学校</th>
+              <th>邮箱地址</th>
+              <th>个人宣言</th>
+              <th>电话号码</th>
+              <th>学习时间</th>
+              <th>操作</th>
+            </tr>
+
+
+            <tr th:each="user:${users}">
+              <td th:text="${user.User_name}"></td>
+              <td th:text="${user.User_pwd}"></td>
+              <td th:text="${user.User_sex}==true?'男':'女'"></td>
+              <td th:text="${#dates.format(user.User_bir,'yyyy/MM/dd')}"></td>
+              <td th:text="${user.User_tagSchool}"></td>
+              <td th:text="${user.User_email}"></td>
+              <td th:text="${user.User_slogan}"></td>
+              <td th:text="${user.User_phone}"></td>
+              <td th:text="${user.User_learningTime}"></td>
+            </tr>
+
+          </table>
+
+
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+     
+
+
+
+
+  </div>
+
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin.min.js"></script>
+
+</body>
+
+</html>

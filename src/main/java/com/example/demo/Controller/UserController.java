@@ -321,4 +321,18 @@ public class UserController {
         return "redirect:/UserPage/alldiary/"+User_name;
     }
 
+
+    @GetMapping("/manager")
+    public String man(Model model){
+        List<User> users = userService.getAllUser();
+        model.addAttribute("users",users);
+
+
+
+        return "man";
+
+
+
+    }
+
 }
