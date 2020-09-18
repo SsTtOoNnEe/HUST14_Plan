@@ -29,4 +29,9 @@ public class ManagerServiceImpl implements ManagerService {
         return managerMapper.ad_register(manager);
 
     }
+
+    @Override
+    public Integer delete_user(String User_name) {
+        return managerMapper.delete_user(User_name);
+    }
 }

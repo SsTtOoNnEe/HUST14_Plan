@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin - Start Bootstrap Template</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body class="bg-dark">
+<div class="container">
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <form th:each="User:${user}" action="/ManagerPage/alter_user" method="post">
+
+                <div class="row">
+                    <div class="col-9">
+                    </div>
+                    <div class="col-1">
+                        <img src="/img/shangbiao.png" width="100px" class="img-thumbnail">
+                    </div>
+<!--                    <div class="col-2" >-->
+<!--                        <div class="form-group"><label>选择图片</label>-->
+<!--                            <input type="file" class="form-control" id="upfile" name="filepic">-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+
+
+                <div class="row">
+                    <div class="col-9">
+                        <div class="form-group">
+                            <label for="inputName3" class="col-md-2 control-label">用户名</label>
+                            <div class="col-md-12">
+                                <input type="text" th:value="${User.User_name}" name="User_name" class="form-control" id="inputName3" placeholder="用户名">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-md-2 control-label">密码</label>
+                            <div class="col-md-12">
+                                <input type="password" th:value="${User.User_pwd}"  name="User_pwd" class="form-control" id="inputPassword3" placeholder="密码">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-md-2 control-label">性别</label>
+                            <div class="col-md-12">
+                                <label class="radio-inline">
+                                    <input type="radio" th:checked="${User.User_sex}==true?1:0"  name="User_sex" id="inlineRadio1" value="1"> 男
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" th:checked="${User.User_sex}==false?1:0"  name="User_sex" id="inlineRadio2" value="0"> 女
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-md-2 control-label">出生日期</label>
+                            <div class="col-md-12">
+                                <input type="date" th:value="${User.User_bir}"   name="User_bir" class="form-control" id="inputPassword3">
+                            </div>
+                        </div>
+                        <!--            "${#dates.format(User.User_bir,'yyyy/MM/dd')}"-->
+                        <div class="form-group">
+                            <label for="inputTel3" class="col-md-2 control-label">电话</label>
+                            <div class="col-md-12">
+                                <input type="tel" th:value="${User.User_phone}"  name="User_phone" class="form-control" id="inputTel3" placeholder="13625634088">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-md-2 control-label">Email</label>
+                            <div class="col-md-12">
+                                <input type="email" th:value="${User.User_email}"  name="User_email" class="form-control" id="inputEmail3" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputName3" class="col-md-2 control-label">目标院校/专业</label>
+                            <div class="col-md-12">
+                                <input type="text" th:value="${User.User_tagSchool}"  name="User_tagSchool" class="form-control" id="inputName3" placeholder="华中科技大学软件学院">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-md-2 control-label">个人宣言</label>
+                            <div class="col-md-12">
+                                <textarea  name="User_slogan" th:text="${User.User_slogan}"  class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-info">修改</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+</body>
+
+</html>
+
+<script language="JavaScript">
+    $('#upfile').change(function () {
+        var file = $('#upfile').get(0).files[0];
+
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload=function (e) {
+            console.log(e);
+            $('#imgshow').get(0).src = e.target.result;
+        }
+    })
+</script>
