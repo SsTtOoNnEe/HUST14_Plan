@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="utf-8">
@@ -22,7 +22,6 @@
 </head>
 
 <body >
-
 
       <h1>管理员界面</h1>
       <div >
@@ -57,6 +56,10 @@
               <td th:text="${user.User_slogan}"></td>
               <td th:text="${user.User_phone}"></td>
               <td th:text="${user.User_learningTime}"></td>
+              <td>
+                <a th:href="@{'alter_user/'+${user.User_name}}" class="btn btn-link" type="button">修改</a>
+                <a th:href="@{'delete_user/'+${user.User_name}}" class="btn btn-link" type="button">删除</a>
+              </td>
             </tr>
 
           </table>

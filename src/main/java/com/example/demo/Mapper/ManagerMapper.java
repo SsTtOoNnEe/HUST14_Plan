@@ -1,10 +1,7 @@
 package com.example.demo.Mapper;
 import com.example.demo.Entity.Manager;
 import com.example.demo.Entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -20,5 +17,8 @@ public interface ManagerMapper {
 
     @Insert("insert into manager_info (Manager_name,Manager_pwd,Manager_sex,Manager_bir,Manager_phone,Manager_email,Manager_key) values(#{Manager_name},#{Manager_pwd},#{Manager_sex},#{Manager_bir},#{Manager_phone},#{Manager_email},#{Manager_key})")
     Integer ad_register(Manager manager);
+
+    @Delete("delete from user_info where User_name=#{User_name}")
+    Integer delete_user(String User_name);
 
 }

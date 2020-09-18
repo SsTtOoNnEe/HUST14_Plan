@@ -13,4 +13,5 @@ public interface ManagerService {
 
     Integer ad_register(Manager manager);
 
+    Integer delete_user(String User_name);
 }
