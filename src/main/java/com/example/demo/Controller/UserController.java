@@ -149,7 +149,7 @@ public class UserController {
             tasks.add(task);
         }
 
-        model.addAttribute("tasks",tasks);
+        model.addAttribute("tasks", tasks);
 
         return "redirect:/UserPage/addfriends/" + User_name;
     }
@@ -171,7 +171,7 @@ public class UserController {
             tasks.add(task);
         }
 
-        model.addAttribute("tasks",tasks);
+        model.addAttribute("tasks", tasks);
         model.addAttribute("user", user);
         model.addAttribute("rankList", rankList);
         return "rankoffriend";
@@ -189,7 +189,7 @@ public class UserController {
         return "redirect:/UserPage/allplan/" + User_name;
     }
 
-    @GetMapping("deleteplan/{User_name}/{Task_name}")
+    @GetMapping("/deleteplan/{User_name}/{Task_name}")
     public String deletePlan(@PathVariable("User_name") String User_name, @PathVariable("Task_name") String Task_name) {
         Integer task_id = taskService.findTaskIdByName(Task_name);
         User user = userService.findUserByName(User_name);
@@ -237,7 +237,7 @@ public class UserController {
             tasks.add(task);
         }
 
-        model.addAttribute("tasks",tasks);
+        model.addAttribute("tasks", tasks);
         model.addAttribute("users", theUsers);
         model.addAttribute("user", user);
         return "addfriend";
@@ -247,7 +247,6 @@ public class UserController {
     public String getStartPlan() {
         return "startplan";
     }
-
 
     @GetMapping("/pause/{User_name}/{taskId}")
     public String getPausePlan(Model model, @PathVariable("taskId") String taskId, @PathVariable("User_name") String User_name) {
@@ -259,8 +258,7 @@ public class UserController {
         model.addAttribute("user", user);
         return "pauseplan";
     }
-
-
+    
     @PostMapping("/testPage/{User_name}")
     public String postPauseTime(@PathVariable("User_name") String User_name, String taskId, String leftTime, Model model) {
         Integer id = Integer.parseInt(taskId);
@@ -348,16 +346,38 @@ public class UserController {
     }
 
     @PostMapping("/adddiary/{User_name}")
-    public String addDiary(@PathVariable("User_name") String User_name, String Diary_content) {
+    public String addDiary(@PathVariable("User_name") String User_name,String Diary_title ,String Diary_content) {
 
-        Integer i = diaryService.addDiary(Diary_content);
-        Integer diary_ID = diaryService.findDiaryIDByContent(Diary_content);
+        Integer i = diaryService.addDiary(Diary_title,Diary_content);
+        Integer diary_ID = diaryService.findDiaryIDByTitle(Diary_title);
 
         User user = userService.findUserByName(User_name);
         String newDiariesID = user.getDiaries_ID() + diary_ID.toString() + ",";
         Integer j = userService.updateDiaryID(User_name, newDiariesID);
 
         return "redirect:/UserPage/alldiary/" + User_name;
+    }
+
+    @GetMapping("/alldiary/UserPage/deletediary/{User_name}/{Diary_ID}")
+    public String deleteDiary(@PathVariable("User_name") String User_name,
+                              @PathVariable("Diary_ID") Integer Diary_ID){
+        User user = userService.findUserByName(User_name);
+        String diaries_ID = user.getDiaries_ID();
+
+        String[] str = diaries_ID.split(",");
+        StringBuilder sb = new StringBuilder();
+        for (String ss : str) {
+            if (ss.equals(Diary_ID.toString())) {
+                continue;
+            }
+            sb.append(ss + ",");
+        }
+        String newDiariesID = sb.toString();
+
+        Integer i = diaryService.deleteDiaryByID(Diary_ID);
+        Integer j = userService.updateDiaryID(User_name,newDiariesID);
+
+        return "redirect:/UserPage/alldiary/"+User_name;
     }
 
 

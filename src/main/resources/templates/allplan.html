@@ -229,6 +229,8 @@
                 <textarea th:text="${user.User_slogan}" style="width: 80%" rows="1" placeholder="世上无难事"></textarea>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-9 form-group">
                 <div class="jumbotron">
@@ -237,7 +239,7 @@
                     <p><a class="btn btn-primary btn-lg" href="#" role="button">冲冲冲</a></p>
                 </div>
             </div>
-            <div class="col-3 ">
+            <div class="col-3 form-group">
                 <h2>Progress</h2>
                 <table class="table">
                     <tr>
@@ -272,10 +274,8 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="col-9 ">
-
                 <div th:each="task:${tasks}" style="width:50%;height:300px;float:left;">
                     <div style="background: rgba(40, 130, 231, 0.3);border-radius:10px;width:80%;height:80%;margin:0 auto;">
                         <table class="table">

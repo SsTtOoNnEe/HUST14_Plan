@@ -6,6 +6,15 @@ public class Diary {
     private Integer Diary_ID;
     private String Diary_content;
     private Date Diary_createdTime;
+    private String Diary_title;
+
+    public String getDiary_title() {
+        return Diary_title;
+    }
+
+    public void setDiary_title(String diary_title) {
+        Diary_title = diary_title;
+    }
 
     public Integer getDiary_ID() {
         return Diary_ID;
