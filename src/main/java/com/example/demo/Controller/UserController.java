@@ -358,7 +358,7 @@ public class UserController {
         return "redirect:/UserPage/alldiary/" + User_name;
     }
 
-    @GetMapping("/alldiary/UserPage/deletediary/{User_name}/{Diary_ID}")
+    @GetMapping("/deletediary/{User_name}/{Diary_ID}")
     public String deleteDiary(@PathVariable("User_name") String User_name,
                               @PathVariable("Diary_ID") Integer Diary_ID){
         User user = userService.findUserByName(User_name);
@@ -385,8 +385,15 @@ public class UserController {
     public String man(Model model) {
         List<User> users = userService.getAllUser();
         model.addAttribute("users", users);
-        return "man";
+        return "ad_userInfo";
 
+    }
+
+    @GetMapping("/testManager")
+    public String findAllUserProfile(Model model){
+        List<User> users = userService.getAllUser();
+        model.addAttribute("users", users);
+        return "ad_profile";
     }
 
 }

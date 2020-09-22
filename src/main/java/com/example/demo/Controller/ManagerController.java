@@ -44,7 +44,7 @@ public class ManagerController {
             System.out.println("登录成功！");
             List<User> users = userService.getAllUser();
             model.addAttribute("users", users);
-            return "redirect:/ManagerPage/manager";
+            return "redirect:/ManagerPage/userProfile";
 
         } else {
             System.out.println("用户名或密码错误！");
@@ -63,11 +63,18 @@ public class ManagerController {
         return "redirect:/ManagerPage/loginM";
     }
 
-    @GetMapping("/manager")
+    @GetMapping("/userProfile")
+    public String getAllUsersProfile(Model model) {
+        List<User> users = userService.getAllUser();
+        model.addAttribute("users", users);
+        return "ad_profile";
+    }
+
+    @GetMapping("/userList")
     public String man(Model model) {
         List<User> users = userService.getAllUser();
         model.addAttribute("users", users);
-        return "man";
+        return "ad_userInfo";
     }
 
     @GetMapping("/delete_user/{User_name}")

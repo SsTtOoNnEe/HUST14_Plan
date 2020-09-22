@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>管理员界面</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS-->
+    <link href="/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin.css" rel="stylesheet">
+
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrap {
+            height: 90%;
+            width: 90%;
+            margin: 10px auto;
+            overflow: hidden;
+            position: relative;
+            margin: 10px auto;
+        }
+
+        .wrap ul {
+            position: absolute;
+        }
+
+        .wrap ul li {
+            height: 90%;
+        }
+
+        .wrap ol {
+            position: absolute;
+            right: 5px;
+            bottom: 10px;
+        }
+
+        .wrap ol li {
+            height: 20px;
+            width: 20px;
+            background: #ccc;
+            border: solid 1px #666;
+            margin-left: 5px;
+            color: #000;
+            float: left;
+
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .wrap ol .on {
+            background: #E97305;
+            color: #fff;
+        }
+
+
+        .modal {
+            display: none;
+            /* 默认隐藏 */
+            position: fixed;
+            /* 固定定位 */
+            z-index: 1;
+            /* 设置在顶层 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* 弹窗内容 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* 关闭按钮 */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">管理员界面</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="/ManagerPage/userProfile">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">用户列表</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <a class="nav-link" href="/ManagerPage/userList">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">用户信息</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>用户详细信息</h5>
+
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="table_foo_table.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="table_foo_table.html#">Config option 1</a>
+                                </li>
+                                <li><a href="table_foo_table.html#">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
+                            <thead>
+                            <tr>
+                                <th data-toggle="true">用户名</th>
+                                <th>电子邮箱</th>
+                                <th>电话</th>
+                                <th data-hide="all">性别</th>
+                                <th data-hide="all">密码</th>
+                                <th data-hide="all">出生日期</th>
+                                <th data-hide="all">目标院校</th>
+                                <th data-hide="all">个人宣言</th>
+                                <th data-hide="all">学习时长</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr th:each="user:${users}">
+                                <td th:text="${user.User_name}">Project - This is example of project</td>
+                                <td th:text="${user.User_email}">Patrick Smith</td>
+                                <td th:text="${user.User_phone}">0800 051213</td>
+                                <td th:text="${user.User_sex}==true?'男':'女'">Inceptos Hymenaeos Ltd</td>
+                                <td th:text="${user.User_pwd}"></td>
+                                <td th:text="${#dates.format(user.User_bir,'yyyy/MM/dd')}">20%</td>
+                                <td th:text="${user.User_tagSchool}">Jul 14, 2013</td>
+                                <td th:text="${user.User_slogan}"></td>
+                                <td th:text="${user.User_learningTime}"></td>
+                                <td>
+                                    <a th:href="@{'alter_user/'+${user.User_name}}" class="btn btn-link" type="button">修改</a>
+                                    <a th:href="@{'delete_user/'+${user.User_name}}" class="btn btn-link" type="button">删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+
+<script>
+    var btn = document.getElementById("myBtn");
+    var modal = document.getElementById("myModal");
+    var close = document.querySelector(".closePic");
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    close.onclick = function () {
+        modal.style.display = "none";
+    }
+</script>
+
+<script>
+    var timelen = document.querySelector('.timeLength');
+    var ji = document.querySelector('.jishi');
+    var dao = document.querySelector('.daojishi');
+
+    ji.onclick = function () {
+        timelen.style.visibility = "hidden";
+    }
+
+    dao.onclick = function () {
+        timelen.style.visibility = "visible";
+    }
+</script>
+<!-- 
+<script>
+  // 获取弹窗
+  var du = document.getElementById("dupeng");
+  // alert(du);
+  // function duPengShow() {
+  // du.style.display = "block";
+  //  }  
+  // 打开弹窗的按钮对象
+   //var btn = document.getElementById("duBtn");  
+   var list = document.getElementsByClassName("duBtn");
+
+   for(var i in list){
+    list[i].onclick= function(){
+       du.style.display = "block";
+   }  
+
+   }  
+  </script>
+
+  <script>
+    var xu=document.getElementById("xuzhiwen");
+    var list=document.getElementsByClassName("editMyplan");
+    for(var i in list){
+      list[i].onclick=function(){
+        xu.style.display="block";
+      }
+    }
+  </script>
+  
+
+
+
+
+
+
+  <script>
+  var btn2 = document.querySelector(".startfirstplan");
+  var modal2 = document.getElementById("myFirstplan");
+  btn2.onclick = function(){
+  modal2.style.display = "block";
+  }
+  </script>
+  
+ -->
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        var wrap = document.getElementById('wrap'),
+            pic = document.getElementById('pic').getElementsByTagName("li"),
+            list = document.getElementById('list').getElementsByTagName('li'),
+            index = 0,
+            timer = null;
+
+        // 定义并调用自动播放函数
+        timer = setInterval(autoPlay, 2000);
+
+        // 鼠标划过整个容器时停止自动播放
+        wrap.onmouseover = function () {
+            clearInterval(timer);
+        }
+
+        // 鼠标离开整个容器时继续播放至下一张
+        wrap.onmouseout = function () {
+            timer = setInterval(autoPlay, 2000);
+        }
+        // 遍历所有数字导航实现划过切换至对应的图片
+        for (var i = 0; i < list.length; i++) {
+            list[i].onmouseover = function () {
+                clearInterval(timer);
+                index = this.innerText - 1;
+                changePic(index);
+            };
+        }
+        ;
+
+        function autoPlay() {
+            if (++index >= pic.length) index = 0;
+            changePic(index);
+        }
+
+        // 定义图片切换函数
+        function changePic(curIndex) {
+            for (var i = 0; i < pic.length; ++i) {
+                pic[i].style.display = "none";
+                list[i].className = "";
+            }
+            pic[curIndex].style.display = "block";
+            list[curIndex].className = "on";
+        }
+
+    };
+
+</script>
+
+<!-- Mainly scripts -->
+<script src="/js/jquery-2.1.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- FooTable -->
+<script src="/js/plugins/footable/footable.all.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/js/inspinia.js"></script>
+<script src="/js/plugins/pace/pace.min.js"></script>
+
+<!-- Page-Level Scripts -->
+<script>
+    $(document).ready(function () {
+
+        $('.footable').footable();
+        $('.footable2').footable();
+
+    });
+
+</script>
