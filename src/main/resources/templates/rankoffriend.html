@@ -108,7 +108,7 @@
                     <tr th:each="User,userStat:${rankList}">
                         <td th:text="${userStat.index+1}">1</td>
                         <td th:text="${User.User_name}">石剑寒</td>
-                        <td><img src="/img/kobe.png" width="30px"></td>
+                        <td><img th:src="'/img/a'+ ${#numbers.formatDecimal(T(java.lang.Math).floor(T(java.lang.Math).random()*8+1),1,0)}+'.jpg'" width="30px"></td>
                         <td>男</td>
                         <td th:text="${User.User_learningTime}">462</td>
                     </tr>

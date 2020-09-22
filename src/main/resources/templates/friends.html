@@ -114,7 +114,7 @@
 
               <tr>
                 <td>石剑寒</td>
-                <td><img src="/img/kobe.png" width="30px" ></td>
+                <td><img th:src="'/img/a'+ ${#numbers.formatDecimal(T(java.lang.Math).floor(T(java.lang.Math).random()*8+1),1,0)}+'.jpg'" width="30px" ></td>
                 <td>男</td>
                 <td>1998/3/26</td>
                 <td>stone@qq.com</td>
