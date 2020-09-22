@@ -16,22 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `diary_info`
---
-
-DROP TABLE IF EXISTS `diary_info`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `diary_info` (
-  `Diary_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Diary_content` varchar(500) DEFAULT NULL,
-  `Diary_createdTime` date DEFAULT NULL,
-  `Diary_title` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Diary_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `diary_info`
 --
 
@@ -40,21 +24,6 @@ LOCK TABLES `diary_info` WRITE;
 INSERT INTO `diary_info` VALUES (1,'Nong hao! Good afternoon. It is a great honor for me to be here in Shanghai, and to have this opportunity to speak with all of you. I\'d like to thank Fudan University\'s President Yang for his hospitality and his gracious welcome. I\'d also like to thank our outstanding Ambassador, Jon Huntsman, who exemplifies the deep ties and respect between our nati ons. I don\'t know what he said, but I hope it was good. (Laughter.)','2020-09-12','Come On'),(4,'This is my second diary','2020-09-17','Funny Day'),(5,'hhhhh','2020-09-18','Good Boy'),(6,'Hello,zhiwen!','2020-09-18','Good Night'),(7,'Hello,peng!','2020-09-18','Honey'),(8,'奥力给','2020-09-18','Beef'),(10,'aoliegei','2020-09-18','Celtics'),(13,'奥力给','2020-09-20','Mud'),(16,' Text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,remaining essentially unchanged.','2020-09-21','Title'),(17,' Text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown\r\n                                                printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,\r\n                                                remaining essentially unchanged.','2020-09-21','Lakers Champion'),(19,'This is my second diary.Foever God!','2020-09-22','Clippers'),(21,'It&rsquo；s the answer told by lines that stretched around schools and churches in numbers this nation has never seen， by people who waited three hours and four hours， many for the first time in their lives， because they believed that this time must be different， that their voices could be that difference。','2020-09-22','Yep'),(22,'It&rsquo；s the answer told by lines that stretched around schools and churches in numbers this nation has never seen， by people who waited three hours and four hours， many for the first time in their lives， because they believed that this time must be different， that their voices could be that difference。','2020-09-22','whats your problems'),(24,'Text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.','2020-09-22','Funny Mud Pee');
 /*!40000 ALTER TABLE `diary_info` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `friend_info`
---
-
-DROP TABLE IF EXISTS `friend_info`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `friend_info` (
-  `fid` int(11) NOT NULL AUTO_INCREMENT,
-  `User_ID` int(11) DEFAULT NULL,
-  `Friend_ID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`fid`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `friend_info`
@@ -67,21 +36,6 @@ INSERT INTO `friend_info` VALUES (1,3,3),(2,3,7),(3,3,8),(4,3,10),(5,24,6),(6,24
 UNLOCK TABLES;
 
 --
--- Table structure for table `friend_list`
---
-
-DROP TABLE IF EXISTS `friend_list`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `friend_list` (
-  `pkid` int(11) NOT NULL AUTO_INCREMENT,
-  `User_ID` int(11) DEFAULT NULL,
-  `Friend_ID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`pkid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `friend_list`
 --
 
@@ -90,26 +44,6 @@ LOCK TABLES `friend_list` WRITE;
 INSERT INTO `friend_list` VALUES (1,6,7),(2,6,8),(3,7,8),(4,8,9),(5,8,10);
 /*!40000 ALTER TABLE `friend_list` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `manager_info`
---
-
-DROP TABLE IF EXISTS `manager_info`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `manager_info` (
-  `Manager_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Manager_name` varchar(45) DEFAULT NULL,
-  `Manager_pwd` varchar(45) DEFAULT NULL,
-  `Manager_sex` int(11) DEFAULT NULL,
-  `Manager_bir` varchar(45) DEFAULT NULL,
-  `Manager_email` varchar(45) DEFAULT NULL,
-  `Manager_key` varchar(45) DEFAULT NULL,
-  `Manager_phone` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Manager_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `manager_info`
@@ -122,24 +56,6 @@ INSERT INTO `manager_info` VALUES (1,'Shijianhan','123456',0,'2020-09-11','123@q
 UNLOCK TABLES;
 
 --
--- Table structure for table `task_info`
---
-
-DROP TABLE IF EXISTS `task_info`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `task_info` (
-  `Task_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Task_name` varchar(45) DEFAULT NULL,
-  `Task_time` varchar(45) DEFAULT NULL,
-  `Task_type` int(11) DEFAULT NULL,
-  `Task_severity` int(11) DEFAULT NULL,
-  `Task_leftTime` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Task_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `task_info`
 --
 
@@ -148,30 +64,6 @@ LOCK TABLES `task_info` WRITE;
 INSERT INTO `task_info` VALUES (2,'如何成为刘逸航','123',0,NULL,50),(4,'RapeLIUyihang','400',0,NULL,300),(5,'Talking to the Moon','250',0,NULL,100),(9,'AVENGERS','234',0,NULL,94),(11,'FunnyMudPee','456',0,NULL,278),(15,'RapeYihangLiu','250',0,NULL,34),(16,'Xiaowangyu','123',0,NULL,50),(17,'WOSHILIUYIHANG','380',0,NULL,266),(18,'RapeLIUliuLIU','250',0,NULL,120),(19,'woshizhiwen','234',0,NULL,98),(20,'RapeYOU','234',0,NULL,123),(21,'RapeLiBaizhen','567',0,NULL,67),(28,'woshijiangxianqiang','123',0,NULL,12323),(29,'Ironman','89',0,NULL,89),(30,'shijianhan','456',0,NULL,456),(34,'我要上jiaoda','123',0,NULL,122),(37,'我要上华科jiyuan','12',0,NULL,6),(38,'我要上孵蛋','20',0,NULL,18);
 /*!40000 ALTER TABLE `task_info` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `user_info`
---
-
-DROP TABLE IF EXISTS `user_info`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_info` (
-  `User_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `User_name` varchar(45) DEFAULT NULL,
-  `User_pwd` varchar(45) DEFAULT NULL,
-  `User_sex` int(11) DEFAULT NULL,
-  `User_bir` date DEFAULT NULL,
-  `User_tagSchool` varchar(45) DEFAULT NULL,
-  `User_email` varchar(45) DEFAULT NULL,
-  `User_slogan` varchar(45) DEFAULT NULL,
-  `Tasks_ID` varchar(45) DEFAULT NULL,
-  `User_phone` varchar(45) CHARACTER SET latin2 COLLATE latin2_general_ci DEFAULT NULL,
-  `User_learningTime` int(11) DEFAULT NULL,
-  `Diaries_ID` varchar(100) DEFAULT '1,',
-  PRIMARY KEY (`User_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `user_info`
@@ -196,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-22 17:10:08
+-- Dump completed on 2020-09-22 17:11:54
