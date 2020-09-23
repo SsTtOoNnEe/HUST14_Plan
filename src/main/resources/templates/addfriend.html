@@ -127,7 +127,7 @@
     
                   <tr th:each="User:${users}">
                     <td th:text="${User.User_name}">石剑寒</td>
-                    <td><img src="/img/kobe.png" width="30px" ></td>
+                    <td><img th:src="'/img/a'+ ${#numbers.formatDecimal(T(java.lang.Math).floor(T(java.lang.Math).random()*8+1),1,0)}+'.jpg'" width="30px" ></td>
                       <td th:text="${User.User_sex}==true?'男':'女'">男</td>
                     <td th:text=" ${#dates.format(User.User_bir,'yyyy/MM/dd')}">1998/3/26</td>
                     <td th:text="${User.User_email}">stone@qq.com</td>

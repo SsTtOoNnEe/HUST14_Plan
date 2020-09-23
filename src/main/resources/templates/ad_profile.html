@@ -153,7 +153,7 @@
                         <a href="profile.html">
                         <div class="col-sm-4">
                             <div class="text-center">
-                                <img alt="image" class="img-circle m-t-xs img-responsive" src="/img/a2.jpg">
+                                <img alt="image" class="img-circle m-t-xs img-responsive" th:src="'/img/a'+ ${#numbers.formatDecimal(T(java.lang.Math).floor(T(java.lang.Math).random()*8+1),1,0)}+'.jpg'" >
                                 <div th:text="${user.User_tagSchool}" class="m-t-xs font-bold">Graphics designer</div>
                             </div>
                         </div>
